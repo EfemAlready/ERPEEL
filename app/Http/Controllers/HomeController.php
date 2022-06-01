@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +25,28 @@ class HomeController extends Controller
      */
     public function index() #berfungsi untuk menampilkan tampilan menu home
     {
-        return view('home'); #memanggil view 'home'
+        $role = Auth::user()->role; #memanggil view 'home'
+        if ($role == '1') {
+            return view('pemain');
+        }
+        if ($role == '2') {
+            return view('aspel');
+        }
+        if ($role == '3') {
+            return view('pelatih');
+        }else{
+            return view('admin',["title"=> "Admin"]);
+        }
+    }
+    public function addaspel(Request $request){
+        $data = new user;
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->password = bcrypt($request->password);
+        $data->role='2';
+        $data->save();
+
+        return redirect()->back();
     }
     public function dashboard() #berfungsi untuk menampilkan tampilan menu dashboard
     {

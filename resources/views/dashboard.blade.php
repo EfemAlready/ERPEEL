@@ -10,14 +10,14 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
+    <link rel="icon" type="image/png" href="assets/img/7035290-01.png">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
     <script src="https://kit.fontawesome.com/83348e384c.js" crossorigin="anonymous"></script>
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
-
+    
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -57,9 +57,9 @@
                                     style="color: #193B58;">Home</a></li>
                             <li><a class="nav-link scrollto" href="#about" style="color: #193B58;">About Us</a></li>
                             <li><a class="nav-link scrollto" href="#services" style="color: #193B58;">Services</a></li>
-                            <li><a class="btn btn-primary" href="" style="border-radius: 40px">Let's Get Started</a></li>
+                            <li><a class="btn btn-primary" href="redirects" style="border-radius: 40px">Let's Get Started</a></li>
                             <li><a class="nav-link scrollto" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                 document.getElementById('logout-form').submit();"><i
+                                                                     document.getElementById('logout-form').submit();"><i
                                         class="fa fa-power-off fa-xl" style="font-size: 30px"></i></a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     class="d-none">
@@ -87,12 +87,21 @@
         </div>
     </header><!-- End Header -->
 
+
     <!-- ======= Hero Section ======= -->
     <section id="hero">
+
         <div class="row">
             <div class="col hero-container " data-aos="fade-up">
-                <h2>LET`S ENJOY</h2>
-                <h1>SOCCER</h1>
+                @auth
+                    <h2>LET`S ENJOY</h2>
+                    <h1>SOCCER</h1>
+                    <h2 style="padding-right: 43vh;padding-top:4vh">{{ Auth::user()->name }} </h2>
+                @else
+                    <h2>LET`S ENJOY</h2>
+                    <h1>SOCCER</h1>
+                @endauth
+
             </div>
 
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
