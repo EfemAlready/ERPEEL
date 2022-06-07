@@ -1,4 +1,4 @@
-#pidoooooooo
+{{-- pidooooo --}}
 @extends('layouts.profiledash')
 <!DOCTYPE html>
 <html lang="en">
