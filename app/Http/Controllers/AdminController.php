@@ -51,4 +51,5 @@ class AdminController extends Controller
     {
         return view('listpel');
     }
+    #uji coba admin
 }
