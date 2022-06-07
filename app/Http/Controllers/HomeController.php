@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index() #berfungsi untuk menampilkan tampilan menu home
     {
         $role = Auth::user()->role; #memanggil view 'home'
-        if ($role == '1') {
+        if ($role == '0') {
             return view('pemain');
         }
         if ($role == '2') {
@@ -38,16 +38,7 @@ class HomeController extends Controller
             return view('admin',["title"=> "Admin"]);
         }
     }
-    public function addaspel(Request $request){
-        $data = new user;
-        $data->name = $request->name;
-        $data->email = $request->email;
-        $data->password = bcrypt($request->password);
-        $data->role='2';
-        $data->save();
-
-        return redirect()->back();
-    }
+    
     public function dashboard() #berfungsi untuk menampilkan tampilan menu dashboard
     {
         return view('dashboard'); #memanggil view 'dashboard'

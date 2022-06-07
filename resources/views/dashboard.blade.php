@@ -17,7 +17,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
-    
+
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -57,10 +57,12 @@
                                     style="color: #193B58;">Home</a></li>
                             <li><a class="nav-link scrollto" href="#about" style="color: #193B58;">About Us</a></li>
                             <li><a class="nav-link scrollto" href="#services" style="color: #193B58;">Services</a></li>
-                            <li><a class="btn btn-primary" href="redirects" style="border-radius: 40px">Let's Get Started</a></li>
-                            <li><a class="nav-link scrollto" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                     document.getElementById('logout-form').submit();"><i
-                                        class="fa fa-power-off fa-xl" style="font-size: 30px"></i></a>
+                            <li><a class="btn btn-primary" href="redirects" style="border-radius: 40px">Let's Get Started</a>
+                            </li>
+                            <li><a class="nav-link scrollto" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                                         document.getElementById('logout-form').submit();"><i class="fa fa-power-off fa-xl"
+                                        style="font-size: 30px"></i></a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     class="d-none">
                                     @csrf
