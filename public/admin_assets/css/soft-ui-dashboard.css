@@ -4898,7 +4898,7 @@ fieldset:disabled .btn {
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
-  color: #cb0c9f;
+  color: #00897B;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
 
@@ -4910,7 +4910,7 @@ fieldset:disabled .btn {
 
 .nav-link:hover,
 .nav-link:focus {
-  color: #830866;
+  color: #006B5D;
 }
 
 .nav-link.disabled {
@@ -4946,8 +4946,8 @@ fieldset:disabled .btn {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #fff;
-  border-color: #dee2e6 #dee2e6 #fff;
+    background-color: #fff;
+    border-color: #fff #fff #00897B;
 }
 
 .nav-tabs .dropdown-menu {

@@ -51,5 +51,8 @@ class AdminController extends Controller
     {
         return view('listpel');
     }
+    function event(){
+        return view('adminpages.event', ["title" => "Event"]);
+    }
     #uji coba admin
 }

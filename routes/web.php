@@ -31,3 +31,4 @@ Route::get('/profile', [App\Http\Controllers\AdminController::class, 'profile'])
 
 Route::get('/listaspel', [App\Http\Controllers\AdminController::class, 'listaspel']);
 Route::get('/listpel', [App\Http\Controllers\AdminController::class, 'listpel']);
+Route::get('/event', [App\Http\Controllers\AdminController::class, 'event']);

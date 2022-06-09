@@ -1,10 +1,9 @@
-@extends('aspelpages.side')
+@extends('adminpages.side')
 @section('admin_assets')
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
         @include('include.nav')
         <div class="container-fluid py-4">
-            {{-- Row --}}
             <div class="row">
                 <div class="col-3">
                     <div class="card mb-4">
@@ -31,10 +30,15 @@
                         </div>
                     </div>
                 </div>
-                
-                
             </div>
-            {{-- End Row --}}
+            
+
+        </div>
+
+
+
+
+
         </div>
         @include('include.plugin')
     </main>

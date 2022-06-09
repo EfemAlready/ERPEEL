@@ -30,7 +30,7 @@ class HomeController extends Controller
             return view('pemain');
         }
         if ($role == '2') {
-            return view('aspel');
+            return view('aspel',["title"=> "Asisten Pelatih"]);
         }
         if ($role == '3') {
             return view('pelatih');
