@@ -28,7 +28,11 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard
 Route::get('/tables', [App\Http\Controllers\AdminController::class, 'alltables']);
 
 Route::get('/profile', [App\Http\Controllers\AdminController::class, 'profile']);
+Route::get('/feedback', [App\Http\Controllers\AdminController::class, 'feedback']);
 
 Route::get('/listaspel', [App\Http\Controllers\AdminController::class, 'listaspel']);
 Route::get('/listpel', [App\Http\Controllers\AdminController::class, 'listpel']);
 Route::get('/event', [App\Http\Controllers\AdminController::class, 'event']);
+Route::get('/grade', [App\Http\Controllers\AdminController::class, 'grade']);
+
+Route::post('/event/action', [App\Http\Controllers\AdminController::class, 'action']);

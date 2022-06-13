@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Event;
 
 class AdminController extends Controller
 {
@@ -51,8 +52,53 @@ class AdminController extends Controller
     {
         return view('listpel');
     }
-    function event(){
+    function event(Request $request){
+        if ($request->ajax()) {
+            $data = Event::whereDate('start', '>=', $request->start)
+                ->whereDate('end',   '<=', $request->end)
+                ->get(['id', 'title', 'start', 'end']);
+            return response()->json($data);
+        }
+        
         return view('adminpages.event', ["title" => "Event"]);
+
     }
-    #uji coba admin
+
+    public function action(Request $request)
+    {
+        if ($request->ajax()) {
+            if ($request->type == 'add') {
+                $event = Event::create([
+                    'title'        =>    $request->title,
+                    'start'        =>    $request->start,
+                    'end'        =>    $request->end
+                ]);
+
+                return response()->json($event);
+            }
+
+            if ($request->type == 'update') {
+                $event = Event::find($request->id)->update([
+                    'title'        =>    $request->title,
+                    'start'        =>    $request->start,
+                    'end'        =>    $request->end
+                ]);
+
+                return response()->json($event);
+            }
+
+            if ($request->type == 'delete') {
+                $event = Event::find($request->id)->delete();
+
+                return response()->json($event);
+            }
+        }
+    }
+    public function grade(){
+        return view('adminpages.grade', ["title" => "Grades"]);
+    }
+    public function feedback()
+    {
+        return view('adminpages.feedback', ["title" => "Feedback"]);
+    }
 }
