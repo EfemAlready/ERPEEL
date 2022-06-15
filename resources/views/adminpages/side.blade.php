@@ -47,13 +47,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('feedback') }}">
+                    <a class="nav-link" href="{{ url('lineup') }}">
                         <div class="">
-                            <i class="fa fa-comments icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center"
-                                aria-hidden="true"></i>
-                                
+                            <i class="icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center"
+                                aria-hidden="true"><img src="assets/img/football-01.svg" alt="" style="width:18px;fill:#67748E"></i>
+
                         </div>
-                        <span class="nav-link-text ms-1">Feedback</span>
+                        <span class="nav-link-text ms-1">Line Up</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -61,7 +61,7 @@
                         <div class="">
                             <i class="fa fa-a icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center"
                                 aria-hidden="true"></i>
-                                
+
                         </div>
                         <span class="nav-link-text ms-1">Grade</span>
                     </a>

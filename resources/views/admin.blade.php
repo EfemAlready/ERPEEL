@@ -112,7 +112,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-12">
                     <div class="card z-index-2 mb-4">
                         <div class="card-header pb-0">
                             <h6>Game Performance</h6>
@@ -125,7 +125,36 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5">
+                <div class="col-lg-4">
+                    <div class="card z-index-2">
+                        <div class="card-header pb-0">
+                            <h6>Tambah Pemain</h6>
+
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ url('/addpelatih') }}" role="form text-left" method="POST">
+                                @csrf
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="name" placeholder="Name"
+                                        aria-label="Name" aria-describedby="email-addon" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" name="email" placeholder="Email"
+                                        aria-label="Email" aria-describedby="email-addon" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" class="form-control" name="password" placeholder="Password"
+                                        aria-label="Password" aria-describedby="password-addon" required>
+                                </div>
+
+                                <div class="text-center">
+                                    <input type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
                     <div class="card z-index-2">
                         <div class="card-header pb-0">
                             <h6>Tambah Asisten Pelatih</h6>
@@ -154,7 +183,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="card z-index-2">
                         <div class="card-header pb-0">
                             <h6>Tambah Pelatih</h6>

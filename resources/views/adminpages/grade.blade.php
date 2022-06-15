@@ -5,6 +5,34 @@
         @include('include.nav')
         <div class="container-fluid py-4">
             <div class="row">
+                <div class="col-lg-9">
+                    <div class="card z-index-2 mb-4">
+                        <div class="card-header pb-0">
+                            <h6>Team Progress</h6>
+
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="chart">
+                                <canvas id="chart-line" class="chart-canvas"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card z-index-2 mb-4">
+                        <div class="card-header pb-0">
+                            <h6>Team Skills</h6>
+
+                        </div>
+                        <div class="card-body p-3">
+                            <div class="chart">
+
+                                <canvas id="myChart" width="300" height="300"></canvas>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
@@ -74,7 +102,7 @@
                                         <tbody>
                                             <tr>
                                                 <th scope="row"><i class="fa fa-group"
-                                                        style="padding-right:10px"></i>Class Average</th>
+                                                        style="padding-right:10px"></i>Overall Rating</th>
                                                 <td style="padding-left:3vh">
                                                     <div class="row">
                                                         <div class="col">20</div>
@@ -91,14 +119,14 @@
                                                                         <a class="dropdown-item border-radius-md"
                                                                             href="javascript:;">
                                                                             <div class="d-flex py-1">
-                                                                                
+
                                                                                 <div
                                                                                     class="d-flex flex-column justify-content-center">
                                                                                     <h6
                                                                                         class="text-sm font-weight-normal mb-1">
                                                                                         Return
                                                                                     </h6>
-                                                                                    
+
                                                                                 </div>
                                                                             </div>
                                                                         </a>
@@ -107,19 +135,19 @@
                                                                         <a class="dropdown-item border-radius-md"
                                                                             href="javascript:;">
                                                                             <div class="d-flex py-1">
-                                                                                
+
                                                                                 <div
                                                                                     class="d-flex flex-column justify-content-center">
                                                                                     <h6
                                                                                         class="text-sm font-weight-normal mb-1">
                                                                                         Details
                                                                                     </h6>
-                                                                                    
+
                                                                                 </div>
                                                                             </div>
                                                                         </a>
                                                                     </li>
-                                                    
+
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -128,9 +156,9 @@
 
 
                                             </tr>
-                                             <tr>
+                                            <tr>
                                                 <th scope="row" style="text-weight:400"><img src="../assets/img/team-2.jpg"
-                                                                        class="avatar avatar-sm me-3" alt="user1">Ini Nama</th>
+                                                        class="avatar avatar-sm me-3" alt="user1">Ini Nama</th>
                                                 <td style="padding-left:3vh">
                                                     <div class="row">
                                                         <div class="col">20</div>
@@ -147,14 +175,14 @@
                                                                         <a class="dropdown-item border-radius-md"
                                                                             href="javascript:;">
                                                                             <div class="d-flex py-1">
-                                                                                
+
                                                                                 <div
                                                                                     class="d-flex flex-column justify-content-center">
                                                                                     <h6
                                                                                         class="text-sm font-weight-normal mb-1">
                                                                                         Return
                                                                                     </h6>
-                                                                                    
+
                                                                                 </div>
                                                                             </div>
                                                                         </a>
@@ -163,19 +191,19 @@
                                                                         <a class="dropdown-item border-radius-md"
                                                                             href="javascript:;">
                                                                             <div class="d-flex py-1">
-                                                                                
+
                                                                                 <div
                                                                                     class="d-flex flex-column justify-content-center">
                                                                                     <h6
                                                                                         class="text-sm font-weight-normal mb-1">
                                                                                         Details
                                                                                     </h6>
-                                                                                    
+
                                                                                 </div>
                                                                             </div>
                                                                         </a>
                                                                     </li>
-                                                    
+
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -184,7 +212,7 @@
 
 
                                             </tr>
-                                            
+
 
                                         </tbody>
                                     </table>

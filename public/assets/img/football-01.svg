@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#67748E;}
+</style>
+<g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)">
+	<path class="st0" d="M10,180c0-13,7-20,20-20c17,0,20-7,20-40s-3-40-20-40c-13,0-20-7-20-20c0-17,7-20,50-20s50,3,50,20
+		c0,11-6,29-12,40c-10,16-10,24,0,40c6,11,12,29,12,40c0,17-7,20-50,20S10,197,10,180z"/>
+	<path class="st0" d="M130,180c0-11,6-29,12-40c10-16,10-24,0-40c-6-11-12-29-12-40c0-17,7-20,50-20s50,3,50,20c0,13-7,20-20,20
+		c-17,0-20,7-20,40s3,40,20,40c13,0,20,7,20,20c0,17-7,20-50,20S130,197,130,180z"/>
+	<path class="st0" d="M10,120c0-11,7-20,15-20s15,9,15,20s-7,20-15,20S10,131,10,120z"/>
+	<path class="st0" d="M200,120c0-11,7-20,15-20s15,9,15,20s-7,20-15,20S200,131,200,120z"/>
+	<path class="st0" d="M110,120c0-5,5-10,10-10c6,0,10,5,10,10c0,6-4,10-10,10C115,130,110,126,110,120z"/>
+</g>
+</svg>

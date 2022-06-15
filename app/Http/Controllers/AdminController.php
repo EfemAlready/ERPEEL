@@ -97,8 +97,8 @@ class AdminController extends Controller
     public function grade(){
         return view('adminpages.grade', ["title" => "Grades"]);
     }
-    public function feedback()
+    public function lineup()
     {
-        return view('adminpages.feedback', ["title" => "Feedback"]);
+        return view('adminpages.lineup', ["title" => "Line Up"]);
     }
 }
