@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class AspelController extends Controller
+class PemainController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class AspelController extends Controller
     {
         $user = user::all();
 
-        return view('adminpages.aspelcrud.index', ["title" => "Index", 'users' => $user]);
+        return view('adminpages.pemaincrud.index', ["title" => "Index", 'users' => $user]);
     }
 
     /**
@@ -26,7 +25,7 @@ class AspelController extends Controller
      */
     public function create()
     {
-        return view('adminpages.aspelcrud.create', ["title" => "Create"]);
+        return view('adminpages.pemaincrud.create', ["title" => "Create"]);
     }
 
     /**
@@ -42,10 +41,10 @@ class AspelController extends Controller
         $data->email = $request->email;
         $data->position = $request->position;
         $data->password = bcrypt($request->password);
-        $data->role = '2';
+        $data->role = '0';
         $data->save();
 
-        return redirect()->back()->with('success', 'Asisten Pelatih is successfully saved');
+        return redirect()->back()->with('success', 'Pemain is successfully saved');
     }
 
     /**
@@ -58,7 +57,7 @@ class AspelController extends Controller
     {
         //
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -67,9 +66,9 @@ class AspelController extends Controller
      */
     public function edit($id)
     {
-        $aspel = user::findOrFail($id);
+        $pemain = user::findOrFail($id);
 
-        return view('adminpages.aspelcrud.edit', ["title" => "Edit"], compact('aspel'));
+        return view('adminpages.pemaincrud.edit', ["title" => "Edit"], compact('pemain'));
     }
 
     /**
@@ -81,14 +80,14 @@ class AspelController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        
         $data = User::findOrFail($id);
         $data->name = $request->name;
         $data->email = $request->email;
         $data->position = $request->position;
         $data->save();
-
-        return redirect('/tables')->with('success', 'Asisten Pelatih Data is successfully updated');
+        
+        return redirect('/tables')->with('success', 'Game Data is successfully updated');
     }
 
     /**
@@ -102,6 +101,6 @@ class AspelController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect('/aspelcrud')->with('success', 'Asisten Pelatih Data is successfully deleted');
+        return redirect('/tables')->with('success', 'Game Data is successfully deleted');
     }
 }

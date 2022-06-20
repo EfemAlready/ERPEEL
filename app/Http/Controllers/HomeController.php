@@ -35,7 +35,7 @@ class HomeController extends Controller
         if ($role == '3') {
             return view('pelatih');
         }else{
-            return view('admin',["title"=> "Admin"]);
+            return view('admin',["title"=> "Dashboard"]);
         }
     }
     

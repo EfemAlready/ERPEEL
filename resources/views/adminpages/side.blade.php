@@ -38,7 +38,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('event') }}">
+                    <a class="nav-link" href="{{ url('event/index') }}">
                         <div class="">
                             <i class="fa fa-calendar icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center"
                                 aria-hidden="true"></i>
@@ -127,7 +127,7 @@
     </aside>
     @yield('admin_assets')
     <!--   Core JS Files   -->
-
+    <script src="{{ asset('js/app.js') }}" type="text/js"></script>
     <script src="admin_assets/corejs.js"></script>
     <script>
         var win = navigator.platform.indexOf('Win') > -1;

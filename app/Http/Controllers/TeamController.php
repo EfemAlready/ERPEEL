@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
-class AspelController extends Controller
+class TeamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class AspelController extends Controller
      */
     public function index()
     {
-        $user = user::all();
+        $team = Team::all();
 
-        return view('adminpages.aspelcrud.index', ["title" => "Index", 'users' => $user]);
+        return view('adminpages.teamcrud.index', ["title" => "Index Team", 'teams' => $team]);
     }
 
     /**
@@ -26,7 +26,7 @@ class AspelController extends Controller
      */
     public function create()
     {
-        return view('adminpages.aspelcrud.create', ["title" => "Create"]);
+        return view('adminpages.teamcrud.create', ["title" => "Create Team"]);
     }
 
     /**
@@ -37,15 +37,11 @@ class AspelController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new user;
-        $data->name = $request->name;
-        $data->email = $request->email;
-        $data->position = $request->position;
-        $data->password = bcrypt($request->password);
-        $data->role = '2';
+        $data = new Team();
+        $data->Name_Team  = $request->Name_Team;
         $data->save();
 
-        return redirect()->back()->with('success', 'Asisten Pelatih is successfully saved');
+        return redirect()->back()->with('success', 'Team is successfully saved');
     }
 
     /**
@@ -67,9 +63,9 @@ class AspelController extends Controller
      */
     public function edit($id)
     {
-        $aspel = user::findOrFail($id);
+        $team = Team::findOrFail($id);
 
-        return view('adminpages.aspelcrud.edit', ["title" => "Edit"], compact('aspel'));
+        return view('adminpages.teamcrud.edit', ["title" => "Edit Team"], compact('team'));
     }
 
     /**
@@ -81,14 +77,11 @@ class AspelController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $data = User::findOrFail($id);
-        $data->name = $request->name;
-        $data->email = $request->email;
-        $data->position = $request->position;
+        $data = Team::findOrFail($id);
+        $data->Name_Team  = $request->Name_Team;
         $data->save();
 
-        return redirect('/tables')->with('success', 'Asisten Pelatih Data is successfully updated');
+        return redirect('/lineup')->with('success', 'Team Data is successfully updated');
     }
 
     /**
@@ -99,9 +92,9 @@ class AspelController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
+        $user = Team::findOrFail($id);
         $user->delete();
 
-        return redirect('/aspelcrud')->with('success', 'Asisten Pelatih Data is successfully deleted');
+        return redirect('/lineup')->with('success', 'Team Data is successfully deleted');
     }
 }

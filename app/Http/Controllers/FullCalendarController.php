@@ -6,52 +6,82 @@ use Illuminate\Http\Request;
 
 use App\Models\Event;
 
-class FullCalenderController extends Controller
+class FullCalendarController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-    	if($request->ajax())
-    	{
-    		$data = Event::whereDate('start', '>=', $request->start)
-                       ->whereDate('end',   '<=', $request->end)
-                       ->get(['id', 'title', 'start', 'end']);
-            return response()->json($data);
-    	}
-    	return view('fullcalendar');
+    	$events = array();
+        $bookings = Event::all();
+        foreach($bookings as $booking) {
+            $color = null;
+            if($booking->title == 'Training') {
+                $color = '#924ACE';
+            }
+            if($booking->title == 'Match') {
+                $color = '#68B01A';
+            }
+
+            $events[] = [
+                'id'   => $booking->id,
+                'title' => $booking->title,
+                'start' => $booking->start_date,
+                'end' => $booking->end_date,
+                'color' => $color
+            ];
+        }
+        return view('adminpages.event', ['events' => $events,'title'=> "Event"]);
     }
 
-    public function action(Request $request)
+    public function action(Request $request)//store = action
     {
-    	if($request->ajax())
-    	{
-    		if($request->type == 'add')
-    		{
-    			$event = Event::create([
-    				'title'		=>	$request->title,
-    				'start'		=>	$request->start,
-    				'end'		=>	$request->end
-    			]);
+		$request->validate([
+			'title' => 'required|string'
+		]);
 
-    			return response()->json($event);
-    		}
+		$booking = Event::create([
+			'title' => $request->title,
+			'start_date' => $request->start_date,
+			'end_date' => $request->end_date,
+		]);
 
-    		if($request->type == 'update')
-    		{
-    			$event = Event::find($request->id)->update([
-    				'title'		=>	$request->title,
-    				'start'		=>	$request->start,
-    				'end'		=>	$request->end
-    			]);
+		$color = null;
 
-    			return response()->json($event);
-    		}
+		if ($booking->title == 'Test') {
+			$color = '#924ACE';
+		}
 
-    		if($request->type == 'delete')
-    		{
-    			$event = Event::find($request->id)->delete();
+		return response()->json([
+			'id' => $booking->id,
+			'start' => $booking->start_date,
+			'end' => $booking->end_date,
+			'title' => $booking->title,
+			'color' => $color ? $color : '',
 
-    			return response()->json($event);
-    		}
-    	}
+		]);
     }
+	public function update(Request $request, $id)
+	{
+		$booking = Event::find($id);
+		if (!$booking) {
+			return response()->json([
+				'error' => 'Unable to locate the event'
+			], 404);
+		}
+		$booking->update([
+			'start_date' => $request->start_date,
+			'end_date' => $request->end_date,
+		]);
+		return response()->json('Event updated');
+	}
+	public function destroy($id)
+	{
+		$booking = Event::find($id);
+		if (!$booking) {
+			return response()->json([
+				'error' => 'Unable to locate the event'
+			], 404);
+		}
+		$booking->delete();
+		return $id;
+	}
 }

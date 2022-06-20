@@ -248,6 +248,22 @@
                                         </span>
                                     @enderror
                                 </div>
+                                <label for="position" class="col-md-4 col-form-label text-md-start"
+                                    style="font-weight: 800;font-size: 13px;">{{ __('Position') }}</label>
+                                <div class="input-group mb-3" style="border:2px solid black;border-radius:3px;">
+                                    <span class="input-group-text" id="basic-addon1"
+                                        style="background-color: white;    border: 0px solid #ced4da;"><i
+                                            class="fa-solid fa-key"></i></span>
+                                    <input id="position" type="text"
+                                        class="form-control @error('position') is-invalid @enderror" name="position"
+                                        value="{{ old('position') }}" required autocomplete="position">
+
+                                    @error('position')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                                 <label for="password" class="col-md-4 col-form-label text-md-start"
                                     style="font-weight: 800;font-size: 13px;">{{ __('Password') }}</label>
                                 <div class="input-group mb-3" style="border:2px solid black;border-radius:3px;">

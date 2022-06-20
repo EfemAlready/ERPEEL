@@ -45,8 +45,8 @@
 
                                 </div>
                                 <div class="card-body p-4">
-                                    <div class="chart">
-                                        <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
+                                    <div class="container">
+                                        <canvas id="myline" height="145"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -58,7 +58,7 @@
 
                                 </div>
                                 <div class="card-body p-3">
-                                    <div class="chart">
+                                    <div class="">
 
                                         <canvas id="myChart" width="300" height="300"></canvas>
 
@@ -73,7 +73,7 @@
 
                                 </div>
                                 <div class="card-body px-0 pt-0 pb-2">
-                                    <div class="table-responsive p-0 ">
+                                    <div class="table-responsive p-0    " style="overflow-y:scroll; height:35vh;">
                                         <table class="table align-items-center mb-0">
                                             {{-- <thead>
                                                 <tr>
@@ -92,7 +92,7 @@
 
                                                 </tr>
                                             </thead> --}}
-                                            <tbody>
+                                            <tbody style="">
 
                                                 @foreach ($pemains as $pemain)
                                                     <!-- Dibagian ini jangan lupa cek controller-->
@@ -211,15 +211,29 @@
 
                                                                     </td>
                                                                     <td>{{ $pemain['email'] }}</td>
-                                                                    <td>{{ $pemain['role'] }}</td>
+                                                                    <td>{{ $pemain['position'] }}</td>
                                                                     <td>{{ $pemain['created_at'] }}</td>
-                                                                    <td class="align-middle">
-                                                                        <a href="javascript:;"
-                                                                            class="text-secondary font-weight-bold text-xs"
-                                                                            data-toggle="tooltip"
-                                                                            data-original-title="Edit user">
-                                                                            See Details
-                                                                        </a>
+                                                                    <td><a href="{{ route('pemaincrud.edit', $pemain->id) }}"
+                                                                            class="btn btn-primary">Edit</a></td>
+
+                                                                    <td>
+                                                                        @if ($errors->any())
+                                                                            <div class="alert alert-danger">
+                                                                                <ul>
+                                                                                    @foreach ($errors->all() as $error)
+                                                                                        <li>{{ $error }}</li>
+                                                                                    @endforeach
+                                                                                </ul>
+                                                                            </div><br />
+                                                                        @endif
+                                                                        <form
+                                                                            action="{{ route('pemaincrud.destroy', $pemain->id) }}"
+                                                                            method="post">
+                                                                            @csrf
+                                                                            @method('DELETE')
+                                                                            <button class="btn btn-danger"
+                                                                                type="submit">Delete</button>
+                                                                        </form>
                                                                     </td>
 
                                                                 </tr>
@@ -232,14 +246,334 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="gk" role="tabpanel" aria-labelledby="gk-tab">...
+                            <div class="tab-pane fade" id="gk" role="tabpanel" aria-labelledby="gk-tab">
+                                <!-- PEMAIN GOALKEEPER-->
+                                <div class="col-12">
+                                    <div class="card mb-4">
+                                        <div class="card-header pb-0">
+                                            <h6>Daftar Pemain GoalKeeper</h6>
+                                        </div>
+                                        <div class="card-body px-0 pt-0 pb-2">
+                                            <div class="table-responsive p-0">
+                                                <table class="table align-items-center mb-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th
+                                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                                Name</th>
+                                                            <th
+                                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                                Email</th>
+                                                            <th
+                                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                                Position</th>
+                                                            <th
+                                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                                Employed</th>
 
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($pemainsGK as $pemainGK)
+                                                            <!-- Dibagian ini jangan lupa cek controller-->
+                                                            <tr>
+
+                                                                <td>
+                                                                    <div class="d-flex px-2 py-1">
+                                                                        <div>
+                                                                            <!-- dibagiaan ini harusnya ada input didatabase-->
+                                                                            <img src="../assets/img/team-2.jpg"
+                                                                                class="avatar avatar-sm me-3" alt="user1">
+                                                                        </div>
+                                                                        <div
+                                                                            class="d-flex flex-column justify-content-center">
+                                                                            {{ $pemainGK['name'] }}
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </td>
+                                                                <td>{{ $pemainGK['email'] }}</td>
+                                                                <td>{{ $pemainGK['position'] }}</td>
+                                                                <td>{{ $pemainGK['created_at'] }}</td>
+                                                                <td><a href="{{ route('pemaincrud.edit', $pemain->id) }}"
+                                                                        class="btn btn-primary">Edit</a></td>
+
+                                                                <td>
+                                                                    @if ($errors->any())
+                                                                        <div class="alert alert-danger">
+                                                                            <ul>
+                                                                                @foreach ($errors->all() as $error)
+                                                                                    <li>{{ $error }}</li>
+                                                                                @endforeach
+                                                                            </ul>
+                                                                        </div><br />
+                                                                    @endif
+                                                                    <form
+                                                                        action="{{ route('pemaincrud.destroy', $pemain->id) }}"
+                                                                        method="post">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button class="btn btn-danger"
+                                                                            type="submit">Delete</button>
+                                                                    </form>
+                                                                </td>
+
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="tab-pane fade" id="midfielder" role="tabpanel" aria-labelledby="midfielder-tab">...
+                            <div class="tab-pane fade" id="midfielder" role="tabpanel" aria-labelledby="midfielder-tab">
+                                <!-- PEMAIN MIDFIELDER-->
+                                <div class="col-12">
+                                    <div class="card mb-4">
+                                        <div class="card-header pb-0">
+                                            <h6>Daftar Pemain Midfielder</h6>
+                                        </div>
+                                        <div class="card-body px-0 pt-0 pb-2">
+                                            <div class="table-responsive p-0">
+                                                <table class="table align-items-center mb-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th
+                                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                                Name</th>
+                                                            <th
+                                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                                Email</th>
+                                                            <th
+                                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                                Position</th>
+                                                            <th
+                                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                                Employed</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($pemainsMID as $pemainMID)
+                                                            <!-- Dibagian ini jangan lupa cek controller-->
+                                                            <tr>
+
+                                                                <td>
+                                                                    <div class="d-flex px-2 py-1">
+                                                                        <div>
+                                                                            <!-- dibagiaan ini harusnya ada input didatabase-->
+                                                                            <img src="../assets/img/team-2.jpg"
+                                                                                class="avatar avatar-sm me-3" alt="user1">
+                                                                        </div>
+                                                                        <div
+                                                                            class="d-flex flex-column justify-content-center">
+                                                                            {{ $pemainMID['name'] }}
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </td>
+                                                                <td>{{ $pemainMID['email'] }}</td>
+                                                                <td>{{ $pemainMID['position'] }}</td>
+                                                                <td>{{ $pemainMID['created_at'] }}</td>
+                                                                <td><a href="{{ route('pemaincrud.edit', $pemain->id) }}"
+                                                                        class="btn btn-primary">Edit</a></td>
+
+                                                                <td>
+                                                                    @if ($errors->any())
+                                                                        <div class="alert alert-danger">
+                                                                            <ul>
+                                                                                @foreach ($errors->all() as $error)
+                                                                                    <li>{{ $error }}</li>
+                                                                                @endforeach
+                                                                            </ul>
+                                                                        </div><br />
+                                                                    @endif
+                                                                    <form
+                                                                        action="{{ route('pemaincrud.destroy', $pemain->id) }}"
+                                                                        method="post">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button class="btn btn-danger"
+                                                                            type="submit">Delete</button>
+                                                                    </form>
+                                                                </td>
+
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="tab-pane fade" id="defender" role="tabpanel" aria-labelledby="defender-tab">...
+                            <div class="tab-pane fade" id="defender" role="tabpanel" aria-labelledby="defender-tab">
+                                <!-- PEMAIN MIDFIELDER-->
+                                <!-- PEMAIN BACK-->
+                                <div class="col-12">
+                                    <div class="card mb-4">
+                                        <div class="card-header pb-0">
+                                            <h6>Daftar Pemain Back</h6>
+                                        </div>
+                                        <div class="card-body px-0 pt-0 pb-2">
+                                            <div class="table-responsive p-0">
+                                                <table class="table align-items-center mb-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th
+                                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                                Name</th>
+                                                            <th
+                                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                                Email</th>
+                                                            <th
+                                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                                Position</th>
+                                                            <th
+                                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                                Employed</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($pemainsBACK as $pemainBACK)
+                                                            <!-- Dibagian ini jangan lupa cek controller-->
+                                                            <tr>
+
+                                                                <td>
+                                                                    <div class="d-flex px-2 py-1">
+                                                                        <div>
+                                                                            <!-- dibagiaan ini harusnya ada input didatabase-->
+                                                                            <img src="../assets/img/team-2.jpg"
+                                                                                class="avatar avatar-sm me-3" alt="user1">
+                                                                        </div>
+                                                                        <div
+                                                                            class="d-flex flex-column justify-content-center">
+                                                                            {{ $pemainBACK['name'] }}
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </td>
+                                                                <td>{{ $pemainBACK['email'] }}</td>
+                                                                <td>{{ $pemainBACK['position'] }}</td>
+                                                                <td>{{ $pemainBACK['created_at'] }}</td>
+                                                                <td><a href="{{ route('pemaincrud.edit', $pemain->id) }}"
+                                                                        class="btn btn-primary">Edit</a></td>
+
+                                                                <td>
+                                                                    @if ($errors->any())
+                                                                        <div class="alert alert-danger">
+                                                                            <ul>
+                                                                                @foreach ($errors->all() as $error)
+                                                                                    <li>{{ $error }}</li>
+                                                                                @endforeach
+                                                                            </ul>
+                                                                        </div><br />
+                                                                    @endif
+                                                                    <form
+                                                                        action="{{ route('pemaincrud.destroy', $pemain->id) }}"
+                                                                        method="post">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button class="btn btn-danger"
+                                                                            type="submit">Delete</button>
+                                                                    </form>
+                                                                </td>
+
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="tab-pane fade" id="striker" role="tabpanel" aria-labelledby="striker-tab">...</div>
+                            <div class="tab-pane fade" id="striker" role="tabpanel" aria-labelledby="striker-tab">
+                                <div class="col-12">
+                                    <div class="card mb-4">
+                                        <div class="card-header pb-0">
+                                            <h6>Daftar Pemain Back</h6>
+                                        </div>
+                                        <div class="card-body px-0 pt-0 pb-2">
+                                            <div class="table-responsive p-0">
+                                                <table class="table align-items-center mb-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th
+                                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                                Name</th>
+                                                            <th
+                                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                                Email</th>
+                                                            <th
+                                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                                Position</th>
+                                                            <th
+                                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                                Employed</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($pemainsST as $pemainST)
+                                                            <!-- Dibagian ini jangan lupa cek controller-->
+                                                            <tr>
+
+                                                                <td>
+                                                                    <div class="d-flex px-2 py-1">
+                                                                        <div>
+                                                                            <!-- dibagiaan ini harusnya ada input didatabase-->
+                                                                            <img src="../assets/img/team-2.jpg"
+                                                                                class="avatar avatar-sm me-3" alt="user1">
+                                                                        </div>
+                                                                        <div
+                                                                            class="d-flex flex-column justify-content-center">
+                                                                            {{ $pemainST['name'] }}
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </td>
+                                                                <td>{{ $pemainST['email'] }}</td>
+                                                                <td>{{ $pemainST['position'] }}</td>
+                                                                <td>{{ $pemainST['created_at'] }}</td>
+                                                                <td><a href="{{ route('pemaincrud.edit', $pemain->id) }}"
+                                                                        class="btn btn-primary">Edit</a></td>
+
+                                                                <td>
+                                                                    @if ($errors->any())
+                                                                        <div class="alert alert-danger">
+                                                                            <ul>
+                                                                                @foreach ($errors->all() as $error)
+                                                                                    <li>{{ $error }}</li>
+                                                                                @endforeach
+                                                                            </ul>
+                                                                        </div><br />
+                                                                    @endif
+                                                                    <form
+                                                                        action="{{ route('pemaincrud.destroy', $pemain->id) }}"
+                                                                        method="post">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button class="btn btn-danger"
+                                                                            type="submit">Delete</button>
+                                                                    </form>
+                                                                </td>
+
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -293,12 +627,27 @@
                                                         <td>{{ $pelatih['email'] }}</td>
                                                         <td>{{ $pelatih['role'] }}</td>
                                                         <td>{{ $pelatih['created_at'] }}</td>
-                                                        <td class="align-middle">
-                                                            <a href="javascript:;"
-                                                                class="text-secondary font-weight-bold text-xs"
-                                                                data-toggle="tooltip" data-original-title="Edit user">
-                                                                See Details
-                                                            </a>
+                                                        <td><a href="{{ route('pelatihcrud.edit', $pelatih->id) }}"
+                                                                class="btn btn-primary">Edit</a></td>
+
+                                                        <td>
+                                                            @if ($errors->any())
+                                                                <div class="alert alert-danger">
+                                                                    <ul>
+                                                                        @foreach ($errors->all() as $error)
+                                                                            <li>{{ $error }}</li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                </div><br />
+                                                            @endif
+                                                            <form
+                                                                action="{{ route('pelatihcrud.destroy', $pelatih->id) }}"
+                                                                method="post">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn btn-danger"
+                                                                    type="submit">Delete</button>
+                                                            </form>
                                                         </td>
 
                                                     </tr>
@@ -359,12 +708,27 @@
                                                         <td>{{ $aspel['email'] }}</td>
                                                         <td>{{ $aspel['role'] }}</td>
                                                         <td>{{ $aspel['created_at'] }}</td>
-                                                        <td class="align-middle">
-                                                            <a href="javascript:;"
-                                                                class="text-secondary font-weight-bold text-xs"
-                                                                data-toggle="tooltip" data-original-title="Edit user">
-                                                                See Details
-                                                            </a>
+                                                        <td><a href="{{ route('pelatihcrud.edit', $pelatih->id) }}"
+                                                                class="btn btn-primary">Edit</a></td>
+
+                                                        <td>
+                                                            @if ($errors->any())
+                                                                <div class="alert alert-danger">
+                                                                    <ul>
+                                                                        @foreach ($errors->all() as $error)
+                                                                            <li>{{ $error }}</li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                </div><br />
+                                                            @endif
+                                                            <form
+                                                                action="{{ route('pelatihcrud.destroy', $pelatih->id) }}"
+                                                                method="post">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn btn-danger"
+                                                                    type="submit">Delete</button>
+                                                            </form>
                                                         </td>
 
                                                     </tr>

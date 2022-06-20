@@ -51,7 +51,8 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'], // di set atau di atur validasinya dengan wajib diisi dan bisa di isi karakter dengan sampai 255 karakter
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], // di set atau di atur dengan wajib diisi, bisa di isi hingga 255 karakter dan memiliki keunikan dari setiap user yang dimana email yang sama tidak akan bisa digunakan untuk register
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'position' => ['string', 'max:20', 'unique:users'], // di set atau di atur dengan wajib diisi, bisa di isi hingga 255 karakter dan memiliki keunikan dari setiap user yang dimana email yang sama tidak akan bisa digunakan untuk register
             'password' => ['required', 'string', 'min:8', 'confirmed'], // di set atau diatur dengan wajib diisi, pengisian karakter minimal 8 karakter dan terdapat confirmed untuk menyamakan password baru dengan yang diinput dengan tujuan  jika pengguna salah mengetik password, mereka tidak akan mengenalinya. password konfirmasi menangkap kesalahan ketik dengan meminta pengguna mengetikkan kata sandi mereka dua kali.
         ]);
     }
@@ -67,6 +68,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'position' =>$data['position'],
             'password' => Hash::make($data['password']), // password otomatis ter ubah saat masuk ke database menjadi suatu Hash
         ]);
     }

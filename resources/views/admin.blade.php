@@ -6,7 +6,7 @@
         <div class="container-fluid py-4">
             {{-- Row --}}
             <div class="row">
-                <div class="col-3">
+                <div class="col-4">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
                             <h6 style="font-weight: 700">Decul FC</h6>
@@ -31,7 +31,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-5">
+                <div class="col-8">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
                             <h6 style="font-weight: 700">Main Stats</h6>
@@ -112,15 +112,15 @@
                     </div>
 
                 </div>
-                <div class="col-lg-12">
+                <div class="col-lg-8">
                     <div class="card z-index-2 mb-4">
                         <div class="card-header pb-0">
                             <h6>Game Performance</h6>
 
                         </div>
                         <div class="card-body p-3">
-                            <div class="chart">
-                                <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
+                            <div class="">
+                                <canvas id="myline"  height="87"></canvas>
                             </div>
                         </div>
                     </div>
@@ -132,7 +132,7 @@
 
                         </div>
                         <div class="card-body">
-                            <form action="{{ url('/addpelatih') }}" role="form text-left" method="POST">
+                            <form action="{{ url('/addpemain') }}" role="form text-left" method="POST" id="formpemain">
                                 @csrf
                                 <div class="mb-3">
                                     <input type="text" class="form-control" name="name" placeholder="Name"
@@ -141,6 +141,23 @@
                                 <div class="mb-3">
                                     <input type="email" class="form-control" name="email" placeholder="Email"
                                         aria-label="Email" aria-describedby="email-addon" required>
+                                </div>
+                                <div class="input-group mb-3">
+
+                                    <select class="form-select" id="position" name="position" placeholder="position"
+                                        aria-label="position" aria-describedby="email-addon" form="formpemain">
+                                        <option selected>Choose Position...</option>
+                                        <option value="GK">Goalkeeper (GK)</option>
+                                        <option value="RB">Right Fullback (RB)</option>
+                                        <option value="LB">Left Fullback (LB)</option>
+                                        <option value="CB">Center Back (CB)</option>
+                                        <option value="RM">Right Midfielder (RM)</option>
+                                        <option value="LM">Left Midfielder (LM)</option>
+                                        <option value="CM">Center Midfielder (CM)</option>
+                                        <option value="ST">Striker (ST)</option>
+
+
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <input type="password" class="form-control" name="password" placeholder="Password"
@@ -161,7 +178,7 @@
 
                         </div>
                         <div class="card-body">
-                            <form action="{{ url('/addaspel') }}" role="form text-left" method="POST">
+                            <form action="{{ url('/addaspel') }}" role="form text-left" method="POST" id="formaspel">
                                 @csrf
                                 <div class="mb-3">
                                     <input type="text" class="form-control" name="name" placeholder="Name"
@@ -170,6 +187,23 @@
                                 <div class="mb-3">
                                     <input type="email" class="form-control" name="email" placeholder="Email"
                                         aria-label="Email" aria-describedby="email-addon" required>
+                                </div>
+                                <div class="input-group mb-3">
+
+                                    <select class="form-select" id="position" name="position" placeholder="position"
+                                        aria-label="position" aria-describedby="email-addon" form="formaspel">
+                                        <option selected>Choose Position...</option>
+                                        <option value="GK">Goalkeeper (GK)</option>
+                                        <option value="RB">Right Fullback (RB)</option>
+                                        <option value="LB">Left Fullback (LB)</option>
+                                        <option value="CB">Center Back (CB)</option>
+                                        <option value="RM">Right Midfielder (RM)</option>
+                                        <option value="LM">Left Midfielder (LM)</option>
+                                        <option value="CM">Center Midfielder (CM)</option>
+                                        <option value="ST">Striker (ST)</option>
+
+
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <input type="password" class="form-control" name="password" placeholder="Password"
@@ -186,11 +220,11 @@
                 <div class="col-lg-4">
                     <div class="card z-index-2">
                         <div class="card-header pb-0">
-                            <h6>Tambah Pelatih</h6>
+                            <h6>Tambah Asisten Pelatih</h6>
 
                         </div>
                         <div class="card-body">
-                            <form action="{{ url('/addpelatih') }}" role="form text-left" method="POST">
+                            <form action="{{ url('/addpelatih') }}" role="form text-left" method="POST" id="formpelatih">
                                 @csrf
                                 <div class="mb-3">
                                     <input type="text" class="form-control" name="name" placeholder="Name"
@@ -199,6 +233,23 @@
                                 <div class="mb-3">
                                     <input type="email" class="form-control" name="email" placeholder="Email"
                                         aria-label="Email" aria-describedby="email-addon" required>
+                                </div>
+                                <div class="input-group mb-3">
+
+                                    <select class="form-select" id="position" name="position" placeholder="position"
+                                        aria-label="position" aria-describedby="email-addon" form="formpelatih">
+                                        <option selected>Choose Position...</option>
+                                        <option value="GK">Goalkeeper (GK)</option>
+                                        <option value="RB">Right Fullback (RB)</option>
+                                        <option value="LB">Left Fullback (LB)</option>
+                                        <option value="CB">Center Back (CB)</option>
+                                        <option value="RM">Right Midfielder (RM)</option>
+                                        <option value="LM">Left Midfielder (LM)</option>
+                                        <option value="CM">Center Midfielder (CM)</option>
+                                        <option value="ST">Striker (ST)</option>
+
+
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <input type="password" class="form-control" name="password" placeholder="Password"
@@ -213,9 +264,14 @@
                     </div>
                 </div>
                 
-                
+
+
             </div>
             {{-- End Row --}}
+            
+                
+
+           
         </div>
         @include('include.plugin')
     </main>
