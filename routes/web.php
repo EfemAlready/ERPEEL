@@ -37,6 +37,8 @@ Route::get('/lineup', [App\Http\Controllers\AdminController::class, 'lineup']);
 
 Route::get('/listaspel', [App\Http\Controllers\AdminController::class, 'listaspel']);
 Route::get('/listpel', [App\Http\Controllers\AdminController::class, 'listpel']);
+
+Route::get('/detailpemain', [App\Http\Controllers\AdminController::class, 'detailpemain']);
 // Route::get('/event', [App\Http\Controllers\FullCalendarController::class, 'index'])->name('calendar.event');;
 Route::get('/grade', [App\Http\Controllers\AdminController::class, 'grade']);
 
@@ -44,9 +46,10 @@ Route::post('/event/action', [App\Http\Controllers\AdminController::class, 'acti
 
 //CRUD
 Route::resource('/pemaincrud', App\Http\Controllers\PemainController::class);
+Route::resource('/gradecrud', App\Http\Controllers\GradeController::class);
 Route::resource('/aspelcrud', App\Http\Controllers\AspelController::class);
 Route::resource('/pelatihcrud', App\Http\Controllers\PelatihController::class);
-
+Route::resource('/teamcrud', App\Http\Controllers\TeamController::class);
 
 //CALENDAR
 // Route::get('calendar',[App\Http\Controllers\FullCalendarController::class, 'index'])->name('calendar.index');
@@ -55,10 +58,3 @@ Route::post('event', [App\Http\Controllers\FullCalendarController::class, 'actio
 Route::patch('event/update/{id}', [App\Http\Controllers\FullCalendarController::class, 'update'])->name('calendar.update');
 Route::delete('event/destroy/{id}', [App\Http\Controllers\FullCalendarController::class, 'destroy'])->name('calendar.destroy');
 
-
-Route::get('books', [BookController::class, 'index'])->name('books.index');
-Route::post('books', [BookController::class, 'store'])->name('books.store');
-
-Route::get('/export-db', function () {
-    return "Exporting";
-});

@@ -182,7 +182,7 @@
                                                                     Email</th>
                                                                 <th
                                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                                    Role</th>
+                                                                    Position</th>
                                                                 <th
                                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                                     Employed</th>
@@ -598,7 +598,7 @@
                                                         Email</th>
                                                     <th
                                                         class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                        Role</th><!-- Nanti ganti jadi jabatan-->
+                                                        Position</th><!-- Nanti ganti jadi jabatan-->
                                                     <th
                                                         class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                         Employed</th>

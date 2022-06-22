@@ -63,7 +63,7 @@
                                 aria-hidden="true"></i>
 
                         </div>
-                        <span class="nav-link-text ms-1">Grade</span>
+                        <span class="nav-link-text ms-1">Training</span>
                     </a>
                 </li>
 

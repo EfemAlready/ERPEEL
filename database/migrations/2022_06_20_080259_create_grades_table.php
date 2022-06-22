@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->foreignId('event_id')->constrained()->onUpdate('cascade')
+            ->onDelete('cascade');
             
             $table->integer('pace');
             $table->integer('shooting');

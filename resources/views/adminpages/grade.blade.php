@@ -8,12 +8,12 @@
                 <div class="col-lg-9">
                     <div class="card z-index-2 mb-4">
                         <div class="card-header pb-0">
-                            <h6>Team Progress</h6>
+                            <h6>Team Playstyle Level</h6>
 
                         </div>
                         <div class="card-body p-4">
-                            <div class="chart">
-                                <canvas id="chart-line" class="chart-canvas"></canvas>
+                            <div class=""><h1>{{$avgovrs}}</h1>
+                                
                             </div>
                         </div>
                     </div>
@@ -33,193 +33,100 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <h6 style="font-weight: 700">Grades</h6>
+                            <h6 style="font-weight: 700">Training List</h6>
                             <hr>
                         </div>
                         <div class="card-body" style="margin-bottom: -5vh;margin-top:-5vh">
-                            <div class="row">
+                            <div class="table-responsive p-0">
+                                            <table class="table align-items-center mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th
+                                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                            user id</th>
+                                                        <th
+                                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                            pace</th>
+                                                        <th
+                                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                            shooting</th>
+                                                        <th
+                                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                            passing</th>
+                                                        <th
+                                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                            agility</th>
+                                                        <th
+                                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                            defending</th>
+                                                        <th
+                                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                            overall</th>
+                                                        <th
+                                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                            Date</th>
 
-                                <div class="table-responsive p-0">
-                                    <table class="table table-hover text-nowrap">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Decul FC</th>
-                                                <th scope="col" style="margin-left:-1rem">
+                                                    </tr>
+                                                </thead>
+                                                {{-- BIKIN FK EVENT DI TABLE GRADE LALU --}}
+                                                <tbody>
+                                                    @foreach ($grades as $grade)
+                                                        <!-- Dibagian ini jangan lupa cek controller-->
+                                                        <tr>
 
-                                                    <p style="margin-bottom: -10px; font-weight: 600;color:#00897B">Training
-                                                    </p>
-                                                    <hr style="width:50%">
-                                                    <p
-                                                        style="font-size: 16;font-weight:400;margin-bottom: -1px;margin-top:-10px">
-                                                        Thu
-                                                        23/08/01</p>
-                                                </th>
-                                                <th scope="col" style="margin-left:-1rem">
+                                                            <td>
+                                                                <div class="d-flex px-2 py-1">
+                                                                    <div>
+                                                                        <!-- dibagiaan ini harusnya ada input didatabase-->
+                                                                        <img src="../assets/img/team-2.jpg"
+                                                                            class="avatar avatar-sm me-3" alt="user1">
+                                                                    </div>
+                                                                    <div class="d-flex flex-column justify-content-center">
+                                                                        {{ $grade->name }}
+                                                                    </div>
 
-                                                    <p style="margin-bottom: -10px; font-weight: 600;color:#00897B">Training
-                                                    </p>
-                                                    <hr style="width:50%">
-                                                    <p
-                                                        style="font-size: 16;font-weight:400;margin-bottom: -1px;margin-top:-10px">
-                                                        Thu
-                                                        23/08/01</p>
-                                                </th>
-                                                <th scope="col" style="margin-left:-1rem">
+                                                                </div>
 
-                                                    <p style="margin-bottom: -10px; font-weight: 600;color:#00897B">Training
-                                                    </p>
-                                                    <hr style="width:50%">
-                                                    <p
-                                                        style="font-size: 16;font-weight:400;margin-bottom: -1px;margin-top:-10px">
-                                                        Thu
-                                                        23/08/01</p>
-                                                </th>
-                                                <th scope="col" style="margin-left:-1rem">
+                                                            </td>
+                                                            <td>{{ $grade->pace }}</td>
+                                                            <td>{{ $grade->shooting }}</td>
+                                                            <td>{{ $grade->passing }}</td>
+                                                            <td>{{ $grade->agility }}</td>
+                                                            <td>{{ $grade->defending }}</td>
+                                                            <td>{{ $grade->overall }}</td>
+                                                            <td>{{ $grade->title }}</td>
+                                                            {{-- <td><a href="{{ route('pemaincrud.edit', $pemain->id) }}"
+                                                                    class="btn btn-primary">Edit</a></td>
 
-                                                    <p style="margin-bottom: -10px; font-weight: 600;color:#00897B">Training
-                                                    </p>
-                                                    <hr style="width:50%">
-                                                    <p
-                                                        style="font-size: 16;font-weight:400;margin-bottom: -1px;margin-top:-10px">
-                                                        Thu
-                                                        23/08/01</p>
-                                                </th>
-                                                <th scope="col" style="margin-left:-1rem">
+                                                            <td>
+                                                                @if ($errors->any())
+                                                                    <div class="alert alert-danger">
+                                                                        <ul>
+                                                                            @foreach ($errors->all() as $error)
+                                                                                <li>{{ $error }}</li>
+                                                                            @endforeach
+                                                                        </ul>
+                                                                    </div><br />
+                                                                @endif
+                                                                <form
+                                                                    action="{{ route('pemaincrud.destroy', $pemain->id) }}"
+                                                                    method="post">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button class="btn btn-danger"
+                                                                        type="submit">Delete</button>
+                                                                </form>
+                                                            </td> --}}
 
-                                                    <p style="margin-bottom: -10px; font-weight: 600;color:#00897B">Training
-                                                    </p>
-                                                    <hr style="width:50%">
-                                                    <p
-                                                        style="font-size: 16;font-weight:400;margin-bottom: -1px;margin-top:-10px">
-                                                        Thu
-                                                        23/08/01</p>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row"><i class="fa fa-group"
-                                                        style="padding-right:10px"></i>Overall Rating</th>
-                                                <td style="padding-left:3vh">
-                                                    <div class="row">
-                                                        <div class="col">20</div>
-                                                        <div class="col dropdown">
-                                                            <div class="nav-item dropdown pe-2 d-flex align-items-center">
-                                                                <a href="javascript:;" class="nav-link text-body p-0"
-                                                                    id="dropdownMenuButton" data-bs-toggle="dropdown"
-                                                                    aria-expanded="false">
-                                                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                                                </a>
-                                                                <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
-                                                                    aria-labelledby="dropdownMenuButton">
-                                                                    <li class="mb-2">
-                                                                        <a class="dropdown-item border-radius-md"
-                                                                            href="javascript:;">
-                                                                            <div class="d-flex py-1">
-
-                                                                                <div
-                                                                                    class="d-flex flex-column justify-content-center">
-                                                                                    <h6
-                                                                                        class="text-sm font-weight-normal mb-1">
-                                                                                        Return
-                                                                                    </h6>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="mb">
-                                                                        <a class="dropdown-item border-radius-md"
-                                                                            href="javascript:;">
-                                                                            <div class="d-flex py-1">
-
-                                                                                <div
-                                                                                    class="d-flex flex-column justify-content-center">
-                                                                                    <h6
-                                                                                        class="text-sm font-weight-normal mb-1">
-                                                                                        Details
-                                                                                    </h6>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-
-
-                                            </tr>
-                                            <tr>
-                                                <th scope="row" style="text-weight:400"><img src="../assets/img/team-2.jpg"
-                                                        class="avatar avatar-sm me-3" alt="user1">Ini Nama</th>
-                                                <td style="padding-left:3vh">
-                                                    <div class="row">
-                                                        <div class="col">20</div>
-                                                        <div class="col dropdown">
-                                                            <div class="nav-item dropdown pe-2 d-flex align-items-center">
-                                                                <a href="javascript:;" class="nav-link text-body p-0"
-                                                                    id="dropdownMenuButton" data-bs-toggle="dropdown"
-                                                                    aria-expanded="false">
-                                                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                                                </a>
-                                                                <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
-                                                                    aria-labelledby="dropdownMenuButton">
-                                                                    <li class="mb-2">
-                                                                        <a class="dropdown-item border-radius-md"
-                                                                            href="javascript:;">
-                                                                            <div class="d-flex py-1">
-
-                                                                                <div
-                                                                                    class="d-flex flex-column justify-content-center">
-                                                                                    <h6
-                                                                                        class="text-sm font-weight-normal mb-1">
-                                                                                        Return
-                                                                                    </h6>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="mb">
-                                                                        <a class="dropdown-item border-radius-md"
-                                                                            href="javascript:;">
-                                                                            <div class="d-flex py-1">
-
-                                                                                <div
-                                                                                    class="d-flex flex-column justify-content-center">
-                                                                                    <h6
-                                                                                        class="text-sm font-weight-normal mb-1">
-                                                                                        Details
-                                                                                    </h6>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-
-
-                                            </tr>
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-
-
-                            </div>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
 
                         </div>
                         <div class="card-footer">

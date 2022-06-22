@@ -6,23 +6,123 @@
         <div class="container-fluid py-4">
             {{-- Row --}}
             <div class="row">
-                <div class="col-3">
-                    <div class="card mb-4">
+                <div class="col-8">
+                    <div class="card mb-4" style="height: 65vh;">
                         <div class="card-header pb-0">
-                            <h6 style="font-weight: 700">Decul FC</h6>
+                            <h6 style="font-weight: 700">Formation: 4-4-2</h6>
+                            <h6 style="font-weight: 700">Overall Team : {{ $avgovrs }}</h6>
                         </div>
-                        <div class="card-body" style="margin-bottom: -5vh">
-                            <div class="row">
-                                <div class="col">
-                                    <img src="/assets/img/7035290-01.png" alt="" style="width:150px;">
-                                </div>
-                                <div class="col">
-                                    <div class="row mb-3 mt-">City : Bandung</div>
-                                    <div class="row mb-3">Year : 1944</div>
-                                    <div class="row mb-3">Owner : H.Pido</div>
-                                </div>
+                        <div class="card-body" style="margin-bottom: -5vh" style="">
+                            <style>
+                                img {
+                                    position:
+                                }
 
-                            </div>
+                                .imgA1 {
+                                    position: absolute;
+                                    z-index: 1;
+                                }
+
+                                .imgCF {
+                                    position: relative;
+                                    left: 300px;
+                                    top: -169px;
+                                    z-index: 3;
+                                    height: 30px;
+                                }
+
+                                .imgCF2 {
+                                    position: relative;
+                                    left: 300px;
+                                    top: -169px;
+                                    z-index: 3;
+                                    height: 30px;
+                                }
+
+                                .imgLMF {
+                                    position: relative;
+                                    left: 291px;
+                                    top: 78px;
+                                    z-index: 5;
+                                    height: 30px;
+                                }
+
+                                .imgCMF {
+                                    position: relative;
+                                    left: 291px;
+                                    top: 78px;
+                                    z-index: 6;
+                                    height: 30px;
+                                }
+
+                                .imgCMF2 {
+                                    position: relative;
+                                    left: 291px;
+                                    top: 78px;
+                                    z-index: 7;
+                                    height: 30px;
+                                }
+
+                                .imgRMF {
+                                    position: relative;
+                                    left: 291px;
+                                    top: 78px;
+                                    z-index: 9;
+                                    height: 30px;
+                                }
+
+                                .imgLB {
+                                    position: relative;
+                                    left: 291px;
+                                    top: 78px;
+                                    z-index: 9;
+                                    height: 30px;
+                                }
+
+                                .imgCB {
+                                    position: relative;
+                                    left: 291px;
+                                    top: 78px;
+                                    z-index: 10;
+                                    height: 30px;
+                                }
+
+                                .imgCB2 {
+                                    position: relative;
+                                    left: 291px;
+                                    top: 78px;
+                                    z-index: 11;
+                                    height: 30px;
+                                }
+
+                                .imgRB {
+                                    position: relative;
+                                    left: 291px;
+                                    top: 78px;
+                                    z-index: 12;
+                                    height: 30px;
+                                }
+
+                                .imgGK {
+                                    position: relative;
+                                    left: 291px;
+                                    top: 78px;
+                                    z-index: 13;
+                                    height: 30px;
+                                }
+                            </style>
+                            <img class="imgA1" src="assets/img/field-01.png" alt="" height="400px">
+                            {{-- <img class="imgB1" src="assets/img/tshirt.png" alt="" height=""> --}}
+                            <img class="imgCF" src="assets/img/tshirt.png" alt="" height="">
+                            <img class="imgCF2" src="assets/img/tshirt.png" alt="" height="">
+                            <img class="imgLMF" src="assets/img/tshirt.png" alt="" height="">
+                            <img class="imgCMF" src="assets/img/tshirt.png" alt="" height="">
+                            <img class="imgCMF2" src="assets/img/tshirt.png" alt="" height="">
+                            <img class="imgLB" src="assets/img/tshirt.png" alt="" height="">
+                            <img class="imgCB" src="assets/img/tshirt.png" alt="" height="">
+                            <img class="imgCB2" src="assets/img/tshirt.png" alt="" height="">
+                            <img class="imgRB" src="assets/img/tshirt.png" alt="" height="">
+                            <img class="imgGK" src="assets/img/tshirt.png" alt="" height="">
 
                         </div>
                         <div class="card-footer">
@@ -31,7 +131,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="card z-index-2">
                         <div class="card-header pb-0">
                             <h6>Tambah Team</h6>
@@ -53,106 +153,79 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12">
+                <div class="col-5">
+                    <div class="card mb-4">
+                        <div class="card-header pb-0">
+                            <h6 style="font-weight: 700">Grades</h6>
+                            <hr>
+                        </div>
+                        <div class="card-body" style="margin-bottom: -5vh;margin-top:-5vh">
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Team Name</th>
 
-                    <div class="card mb-4" style="">
-                        <ul class="nav nav-tabs" id="listteam" role="tablist" style="border:0px solid">
-                            @foreach ($teams as $team)
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="{{ $team['Team_Name'] }}-tab" data-bs-toggle="tab"
-                                        data-bs-target="#{{ $team['Team_Name'] }}" type="button" role="tab"
-                                        aria-controls="{{ $team['Team_Name'] }}"
-                                        aria-selected="true">{{ $team['Name_Team'] }}</button>
-                                </li>
-                            @endforeach
+                                        </tr>
+                                    </thead>
+                                    {{-- BIKIN FK EVENT DI TABLE GRADE LALU --}}
+                                    <tbody>
+                                        @foreach ($teams as $team)
+                                            <!-- Dibagian ini jangan lupa cek controller-->
+                                            <tr>
 
-                        </ul>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div>
+                                                            <!-- dibagiaan ini harusnya ada input didatabase-->
+                                                            <img src="../assets/img/team-2.jpg"
+                                                                class="avatar avatar-sm me-3" alt="user1">
+                                                        </div>
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            {{ $team['Name_Team'] }}
+                                                        </div>
 
-                    </div>
-                </div>
-                <div class="tab-content" id="listteamContent">
-                    <div class="tab-pane fade show active" id="{{ $team['Team_Name'] }}" role="tabpanel"
-                        aria-labelledby="{{ $team['Team_Name'] }}-tab">
-                        <div class="row">
+                                                    </div>
 
-                            <!-- List PEMAIN Tiap Team-->
-                            <div class="col-12">
-                                <div class="card mb-4">
-                                    <div class="card-header pb-0">
-                                        <h6>Daftar Pemain</h6>
-                                    </div>
-                                    <div class="card-body px-0 pt-0 pb-2">
-                                        <div class="table-responsive p-0">
-                                            <table class="table align-items-center mb-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th
-                                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                            Name</th>
-                                                        <th
-                                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                            Position</th>
+                                                </td>
 
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {{-- @foreach ($pemains as $pemain)
-                                                                <!-- Dibagian ini jangan lupa cek controller-->
-                                                                <tr>
+                                                <td><a href="{{ route('teamcrud.edit', $team->id) }}"
+                                                        class="btn btn-primary">Edit</a></td>
 
-                                                                    <td>
-                                                                        <div class="d-flex px-2 py-1">
-                                                                            <div>
-                                                                                <!-- dibagiaan ini harusnya ada input didatabase-->
-                                                                                <img src="../assets/img/team-2.jpg"
-                                                                                    class="avatar avatar-sm me-3"
-                                                                                    alt="user1">
-                                                                            </div>
-                                                                            <div
-                                                                                class="d-flex flex-column justify-content-center">
-                                                                                {{ $pemain['name'] }}
-                                                                            </div>
+                                                <td>
+                                                    @if ($errors->any())
+                                                        <div class="alert alert-danger">
+                                                            <ul>
+                                                                @foreach ($errors->all() as $error)
+                                                                    <li>{{ $error }}</li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div><br />
+                                                    @endif
+                                                    <form action="{{ route('teamcrud.destroy', $team->id) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button class="btn btn-danger" type="submit">Delete</button>
+                                                    </form>
+                                                </td>
 
-                                                                        </div>
-
-                                                                    </td>
-                                                                    <td>{{ $pemain['email'] }}</td>
-                                                                    <td>{{ $pemain['position'] }}</td>
-                                                                    <td>{{ $pemain['created_at'] }}</td>
-                                                                    <td><a href="{{ route('pemaincrud.edit', $pemain->id) }}"
-                                                                            class="btn btn-primary">Edit</a></td>
-
-                                                                    <td>
-                                                                        @if ($errors->any())
-                                                                            <div class="alert alert-danger">
-                                                                                <ul>
-                                                                                    @foreach ($errors->all() as $error)
-                                                                                        <li>{{ $error }}</li>
-                                                                                    @endforeach
-                                                                                </ul>
-                                                                            </div><br />
-                                                                        @endif
-                                                                        <form
-                                                                            action="{{ route('pemaincrud.destroy', $pemain->id) }}"
-                                                                            method="post">
-                                                                            @csrf
-                                                                            @method('DELETE')
-                                                                            <button class="btn btn-danger"
-                                                                                type="submit">Delete</button>
-                                                                        </form>
-                                                                    </td>
-
-                                                                </tr>
-                                                            @endforeach --}}
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
+
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-end"><a href="">Edit team</a></div>
+
                         </div>
                     </div>
                 </div>
+
+
 
 
             </div>

@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User;
+
+use Illuminate\Support\Facades\DB;
+use App\Models\Grade;
 use Illuminate\Http\Request;
 
-class PemainController extends Controller
+class GradeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +15,9 @@ class PemainController extends Controller
      */
     public function index()
     {
-        $user = user::all();
-        
-        return view('adminpages.pemaincrud.index', ["title" => "Index", 'users' => $user]);
+        $grade = Grade::all();
+
+        return view('adminpages.gradecrud.index', ["title" => "Index", 'srades' => $grade]);
     }
 
     /**
@@ -25,7 +27,7 @@ class PemainController extends Controller
      */
     public function create()
     {
-        return view('adminpages.pemaincrud.create', ["title" => "Create"]);
+        return view('adminpages.gradecrud.create', ["title" => "Create"]);
     }
 
     /**
@@ -36,15 +38,14 @@ class PemainController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new user;
-        $data->name = $request->name;
-        $data->email = $request->email;
-        $data->position = $request->position;
-        $data->password = bcrypt($request->password);
-        $data->role = '0';
+        $data = new Grade();
+        $data->pace = $request->pace;
+        $data->shooting = $request->shooting;
+        $data->agility = $request->agility;
+        $data->defending = $request->defending;
         $data->save();
 
-        return redirect()->back()->with('success', 'Pemain is successfully saved');
+        return redirect()->back()->with('success', 'Grade is successfully saved');
     }
 
     /**
@@ -57,18 +58,18 @@ class PemainController extends Controller
     {
         //
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($user_id)
     {
-        $pemain = user::findOrFail($id);
+        $grade = Grade::findOrFail($user_id);
 
-        return view('adminpages.pemaincrud.edit', ["title" => "Edit"], compact('pemain'));
+        return view('adminpages.gradecrud.edit', ["title" => "Edit Grade"], compact('grade'));
     }
 
     /**
@@ -78,16 +79,15 @@ class PemainController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $user_id)
     {
-        
-        $data = User::findOrFail($id);
-        $data->name = $request->name;
-        $data->email = $request->email;
-        $data->position = $request->position;
+        $data = new Grade();
+        $data->pace = $request->pace;
+        $data->shooting = $request->shooting;
+        $data->agility = $request->agility;
+        $data->defending = $request->defending;
         $data->save();
-        
-        return redirect('/tables')->with('success', 'Game Data is successfully updated');
+        return view('adminpages.detailpemain', ["title" => "Edit Grade"], compact('grade'));
     }
 
     /**
@@ -98,9 +98,15 @@ class PemainController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
+        $user = Grade::findOrFail($id);
         $user->delete();
 
         return redirect('/tables')->with('success', 'Game Data is successfully deleted');
+    }
+    public function avg(){
+        $avg = DB::table('grades')
+            ->average('overall')
+            ->get();
+        return view('adminpages.grade', ["title" => "Grades"])->with('avgs', $avg);
     }
 }
