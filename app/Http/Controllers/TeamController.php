@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Team;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Str;
+use App\Models\TeamMember;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -39,6 +42,7 @@ class TeamController extends Controller
     {
         $data = new Team();
         $data->Name_Team  = $request->Name_Team;
+        
         $data->save();
 
         return redirect()->back()->with('success', 'Team is successfully saved');
@@ -47,12 +51,19 @@ class TeamController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Team $member)
+
     {
-        //
+        $team_member = DB::table('team_members')
+            ->leftJoin('users', 'users.id', '=', 'team_members.id')
+            ->rightJoin('teams', 'teams.id', '=', 'team_members.id')
+            ->get();
+        
+        return view('adminpages.teamcrud.show', ["title" => 'Details'], compact('member'))->with('members', $team_member);
+
     }
 
     /**
@@ -96,5 +107,21 @@ class TeamController extends Controller
         $user->delete();
 
         return redirect('/lineup')->with('success', 'Team Data is successfully deleted');
+    }
+    
+    public function add_team_member(Request $request)
+    {
+        $team_member = DB::table('team_members')
+        ->leftJoin('users', 'users.id', '=', 'team_members.id')
+        ->rightJoin('teams', 'teams.id', '=', 'team_members.id')
+        ->get();
+
+        $data = new TeamMember();
+        $data->name = $request->name;
+        $data->name_team = $request->name_team;
+        
+        $data->save();
+
+        return view('adminpages.lineup', ["title" => "Edit Team"], compact('team'))->with('team_members', $team_member);
     }
 }

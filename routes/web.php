@@ -26,6 +26,7 @@ route::post('/addaspel', [App\Http\Controllers\AdminController::class, 'addaspel
 route::post('/addpelatih', [App\Http\Controllers\AdminController::class, 'addpelatih']);
 route::post('/addpemain', [App\Http\Controllers\AdminController::class, 'addpemain']);
 route::post('/addteam', [App\Http\Controllers\AdminController::class, 'addteam']);
+route::post('/addteammember', [App\Http\Controllers\TeamController::class, 'addteam']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

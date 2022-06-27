@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\TeamMember;
 use App\Models\User;
 use App\Models\Team;
 use App\Models\Grade;
@@ -156,12 +157,27 @@ class AdminController extends Controller
         // ]);
         return view('adminpages.grade', ["title" => "Grades", 'avgovrs' => $avgovr, 'avgpaces' => $avgpace, 'avgshootings' => $avgshooting,'avgpassings' => $avgpassing, 'avgagilitys' => $avgagility,'avgdefendings' =>$avgdefending])->with('grades', $grade);
     }
-    public function lineup()
+    public function lineup(Request $request)
     {
+        $user =user::all();
         $team = team::all();
         $avgovr = grade::all()
             ->average('overall');
+        // ->leftJoin('users', 'users.id', '=', 'team_members.id')
+        // ->leftJoin('teams', 'teams.id', '=', 'team_members.id')
+        // ->get();
+        // dd($request);
+        $data = new TeamMember();
+        $data->team_id = $request->team_id;
+        $data->user_id = $request->user_id;
+        $data->save();
+        // $teammember = TeamMember::create([
+        //     'team_id' => $request->team_id,
+        //     'user_id' => $request->user_id
+        // ]);
 
-        return view('adminpages.lineup', ["title" => "Team", 'teams' => $team, 'avgovrs' => $avgovr]);
+        
+        
+        return view('adminpages.lineup', ["title" => "Team", 'teams' => $team, 'avgovrs' => $avgovr, 'team_members'=>$user],compact('team'));
     }
 }

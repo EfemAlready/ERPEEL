@@ -6,131 +6,7 @@
         <div class="container-fluid py-4">
             {{-- Row --}}
             <div class="row">
-                <div class="col-8">
-                    <div class="card mb-4" style="height: 65vh;">
-                        <div class="card-header pb-0">
-                            <h6 style="font-weight: 700">Formation: 4-4-2</h6>
-                            <h6 style="font-weight: 700">Overall Team : {{ $avgovrs }}</h6>
-                        </div>
-                        <div class="card-body" style="margin-bottom: -5vh" style="">
-                            <style>
-                                img {
-                                    position:
-                                }
-
-                                .imgA1 {
-                                    position: absolute;
-                                    z-index: 1;
-                                }
-
-                                .imgCF {
-                                    position: relative;
-                                    left: 300px;
-                                    top: -169px;
-                                    z-index: 3;
-                                    height: 30px;
-                                }
-
-                                .imgCF2 {
-                                    position: relative;
-                                    left: 300px;
-                                    top: -169px;
-                                    z-index: 3;
-                                    height: 30px;
-                                }
-
-                                .imgLMF {
-                                    position: relative;
-                                    left: 291px;
-                                    top: 78px;
-                                    z-index: 5;
-                                    height: 30px;
-                                }
-
-                                .imgCMF {
-                                    position: relative;
-                                    left: 291px;
-                                    top: 78px;
-                                    z-index: 6;
-                                    height: 30px;
-                                }
-
-                                .imgCMF2 {
-                                    position: relative;
-                                    left: 291px;
-                                    top: 78px;
-                                    z-index: 7;
-                                    height: 30px;
-                                }
-
-                                .imgRMF {
-                                    position: relative;
-                                    left: 291px;
-                                    top: 78px;
-                                    z-index: 9;
-                                    height: 30px;
-                                }
-
-                                .imgLB {
-                                    position: relative;
-                                    left: 291px;
-                                    top: 78px;
-                                    z-index: 9;
-                                    height: 30px;
-                                }
-
-                                .imgCB {
-                                    position: relative;
-                                    left: 291px;
-                                    top: 78px;
-                                    z-index: 10;
-                                    height: 30px;
-                                }
-
-                                .imgCB2 {
-                                    position: relative;
-                                    left: 291px;
-                                    top: 78px;
-                                    z-index: 11;
-                                    height: 30px;
-                                }
-
-                                .imgRB {
-                                    position: relative;
-                                    left: 291px;
-                                    top: 78px;
-                                    z-index: 12;
-                                    height: 30px;
-                                }
-
-                                .imgGK {
-                                    position: relative;
-                                    left: 291px;
-                                    top: 78px;
-                                    z-index: 13;
-                                    height: 30px;
-                                }
-                            </style>
-                            <img class="imgA1" src="assets/img/field-01.png" alt="" height="400px">
-                            {{-- <img class="imgB1" src="assets/img/tshirt.png" alt="" height=""> --}}
-                            <img class="imgCF" src="assets/img/tshirt.png" alt="" height="">
-                            <img class="imgCF2" src="assets/img/tshirt.png" alt="" height="">
-                            <img class="imgLMF" src="assets/img/tshirt.png" alt="" height="">
-                            <img class="imgCMF" src="assets/img/tshirt.png" alt="" height="">
-                            <img class="imgCMF2" src="assets/img/tshirt.png" alt="" height="">
-                            <img class="imgLB" src="assets/img/tshirt.png" alt="" height="">
-                            <img class="imgCB" src="assets/img/tshirt.png" alt="" height="">
-                            <img class="imgCB2" src="assets/img/tshirt.png" alt="" height="">
-                            <img class="imgRB" src="assets/img/tshirt.png" alt="" height="">
-                            <img class="imgGK" src="assets/img/tshirt.png" alt="" height="">
-
-                        </div>
-                        <div class="card-footer">
-                            <div class="d-flex justify-content-end"><a href="">Edit team</a></div>
-
-                        </div>
-                    </div>
-                </div>
+               
                 <div class="col-lg-3">
                     <div class="card z-index-2">
                         <div class="card-header pb-0">
@@ -143,6 +19,46 @@
                                 <div class="mb-3">
                                     <input type="text" class="form-control" name="Name_Team" placeholder="Team Name"
                                         aria-label="Name" aria-describedby="email-addon" required>
+                                </div>
+
+
+                                <div class="text-center">
+                                    <input type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card z-index-2">
+                        <div class="card-header pb-0">
+                            <h6>Tambah Player</h6>
+
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ url('/addteammember') }}" role="form text-left" method="POST" id="">
+                                @csrf
+                                <div class="input-group mb-3">
+
+                                    <select class="form-select" id="name" name="team_member" placeholder="Player Name"
+                                        aria-label="name" aria-describedby="email-addon" form="formpemain">
+                                        <option selected>Choose Player...</option>
+                                        @foreach ($team_members as $team_member)
+                                            
+                                            <option value="1">{{ $team_member->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="input-group mb-3">
+
+                                    <select class="form-select" id="name" name="team" placeholder="Player Name"
+                                        aria-label="name" aria-describedby="email-addon" form="formpemain">
+                                        <option selected>Choose Team...</option>
+                                        @foreach ($teams as $team)
+                                            
+                                            <option value="namatim">{{ $team["Name_Team"] }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
 
@@ -192,6 +108,10 @@
 
                                                 <td><a href="{{ route('teamcrud.edit', $team->id) }}"
                                                         class="btn btn-primary">Edit</a></td>
+
+                                                <td>
+                                                    <td><a href="{{ route('teamcrud.show', $team->id) }}"
+                                                        class="btn btn-primary">Details</a></td>
 
                                                 <td>
                                                     @if ($errors->any())
