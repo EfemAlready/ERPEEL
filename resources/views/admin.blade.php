@@ -120,7 +120,7 @@
                         </div>
                         <div class="card-body p-3">
                             <div class="">
-                                <canvas id="myline"  height="87"></canvas>
+                                <canvas id="myline" height="87"></canvas>
                             </div>
                         </div>
                     </div>
@@ -220,11 +220,12 @@
                 <div class="col-lg-4">
                     <div class="card z-index-2">
                         <div class="card-header pb-0">
-                            <h6>Tambah Asisten Pelatih</h6>
+                            <h6>Tambah Pelatih</h6>
 
                         </div>
                         <div class="card-body">
-                            <form action="{{ url('/addpelatih') }}" role="form text-left" method="POST" id="formpelatih">
+                            <form action="{{ url('/addpelatih') }}" role="form text-left" method="POST"
+                                id="formpelatih">
                                 @csrf
                                 <div class="mb-3">
                                     <input type="text" class="form-control" name="name" placeholder="Name"
@@ -263,15 +264,15 @@
                         </div>
                     </div>
                 </div>
-                
+
 
 
             </div>
             {{-- End Row --}}
-            
-                
 
-           
+
+
+
         </div>
         @include('include.plugin')
     </main>

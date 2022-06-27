@@ -73,7 +73,7 @@ class AdminController extends Controller
         //     ->select('users.name', 'grades.overall')
         //     // ->where('role', '0')
         //     ->get();
-        $pemainGK = user::all()->where('position', 'GK');
+        $pemainGK = user::all()->where('position', 'GK')->where('role', '0');
         $pemainMID = user::where('position', 'CM')->orWhere('position', 'RM')->orWhere('position', 'LM')->get();
         $pemainBACK = user::where('position', 'CB')->orWhere('position', 'RB')->orWhere('position', 'LB')->get();
         $pemainST = user::all()->where('position', 'ST');
@@ -135,10 +135,16 @@ class AdminController extends Controller
         // ->leftJoin('users', 'users.id', '=', 'grades.id')
         // ->get();
 
-        $grade = DB::table('grades')
-            ->leftJoin('users', 'users.id', '=', 'grades.id')
-            ->rightJoin('events', 'events.id', '=', 'grades.id')
-            ->get();
+        // $grade = DB::table('grades')
+        //     ->leftJoin('users', 'users.id', '=', 'grades.id')
+        //     ->rightJoin('events', 'events.id', '=', 'grades.id')
+        //     ->get();
+
+        $player = User::where('role', '0')->get();
+        $event = Event::all();
+        $grade = Grade::all();
+        // dd($grade);
+
         $avgovr = grade::all()
             ->average('overall');
         $avgpace = grade::all()
@@ -155,11 +161,11 @@ class AdminController extends Controller
         //     ['overall', 'desc'],
 
         // ]);
-        return view('adminpages.grade', ["title" => "Grades", 'avgovrs' => $avgovr, 'avgpaces' => $avgpace, 'avgshootings' => $avgshooting,'avgpassings' => $avgpassing, 'avgagilitys' => $avgagility,'avgdefendings' =>$avgdefending])->with('grades', $grade);
+        return view('adminpages.grade', ["title" => "Grades", 'avgovrs' => $avgovr, 'avgpaces' => $avgpace, 'avgshootings' => $avgshooting, 'avgpassings' => $avgpassing, 'avgagilitys' => $avgagility, 'avgdefendings' => $avgdefending, 'player' => $player, 'event' => $event])->with('grades', $grade);
     }
     public function lineup(Request $request)
     {
-        $user =user::all();
+        $user = user::all();
         $team = team::all();
         $avgovr = grade::all()
             ->average('overall');
@@ -176,8 +182,8 @@ class AdminController extends Controller
         //     'user_id' => $request->user_id
         // ]);
 
-        
-        
-        return view('adminpages.lineup', ["title" => "Team", 'teams' => $team, 'avgovrs' => $avgovr, 'team_members'=>$user],compact('team'));
+
+
+        return view('adminpages.lineup', ["title" => "Team", 'teams' => $team, 'avgovrs' => $avgovr, 'team_members' => $user], compact('team'));
     }
 }
