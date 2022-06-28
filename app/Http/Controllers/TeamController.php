@@ -109,19 +109,17 @@ class TeamController extends Controller
         return redirect('/lineup')->with('success', 'Team Data is successfully deleted');
     }
     
+    
     public function add_team_member(Request $request)
     {
-        $team_member = DB::table('team_members')
-        ->leftJoin('users', 'users.id', '=', 'team_members.id')
-        ->rightJoin('teams', 'teams.id', '=', 'team_members.id')
-        ->get();
-
-        $data = new TeamMember();
-        $data->name = $request->name;
-        $data->name_team = $request->name_team;
-        
-        $data->save();
-
-        return view('adminpages.lineup', ["title" => "Edit Team"], compact('team'))->with('team_members', $team_member);
+        $member = TeamMember::all();
+        $data = TeamMember::create([
+            'user_id' => $request->player,
+            // 'team_id' => $request->team,
+            
+        ]);
+        dd($member);
+        // dd($data);
+        return redirect()->back()->with('success', 'Grade is successfully saved')->with('members', $member);
     }
 }

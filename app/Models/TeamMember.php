@@ -9,7 +9,16 @@ class TeamMember extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'team_id','user_id'
+        'user_id','team_id',
 
     ];
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    public function team()
+    {
+        return $this->belongsTo('App\Models\Team');
+    }
 }

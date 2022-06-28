@@ -167,16 +167,19 @@ class AdminController extends Controller
     {
         $user = user::all();
         $team = team::all();
-        $avgovr = grade::all()
-            ->average('overall');
+        // $avgovr = grade::all()
+        //     ->average('overall');
         // ->leftJoin('users', 'users.id', '=', 'team_members.id')
         // ->leftJoin('teams', 'teams.id', '=', 'team_members.id')
         // ->get();
         // dd($request);
-        $data = new TeamMember();
-        $data->team_id = $request->team_id;
-        $data->user_id = $request->user_id;
-        $data->save();
+        $member = TeamMember::all();
+        // $data = TeamMember::create([
+        //     'user_id' => $request->player,
+        //     'team_id' => $request->team,
+
+        // ]);
+        // dd($member);
         // $teammember = TeamMember::create([
         //     'team_id' => $request->team_id,
         //     'user_id' => $request->user_id
@@ -184,6 +187,6 @@ class AdminController extends Controller
 
 
 
-        return view('adminpages.lineup', ["title" => "Team", 'teams' => $team, 'avgovrs' => $avgovr, 'team_members' => $user], compact('team'));
+        return view('adminpages.lineup', ["title" => "Team", 'teams' => $team,], compact('team'))->with('members', $member);
     }
 }

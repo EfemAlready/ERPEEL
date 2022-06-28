@@ -175,29 +175,7 @@
                                                 <td>{{ $grade->event->title }}</td>
                                                 <td>{{ $grade->event->start_date }}</td>
                                                 <td>{{ $grade->feedback }}</td>
-                                                {{-- <td>{{ $grade->title }}</td> --}}
-                                                {{-- <td><a href="{{ route('pemaincrud.edit', $pemain->id) }}"
-                                                                    class="btn btn-primary">Edit</a></td>
-
-                                                            <td>
-                                                                @if ($errors->any())
-                                                                    <div class="alert alert-danger">
-                                                                        <ul>
-                                                                            @foreach ($errors->all() as $error)
-                                                                                <li>{{ $error }}</li>
-                                                                            @endforeach
-                                                                        </ul>
-                                                                    </div><br />
-                                                                @endif
-                                                                <form
-                                                                    action="{{ route('pemaincrud.destroy', $pemain->id) }}"
-                                                                    method="post">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button class="btn btn-danger"
-                                                                        type="submit">Delete</button>
-                                                                </form>
-                                                            </td> --}}
+                                               
 
                                             </tr>
                                         @endforeach

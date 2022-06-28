@@ -43,23 +43,24 @@
                                     <select class="form-select" id="name" name="team_member" placeholder="Player Name"
                                         aria-label="name" aria-describedby="email-addon" form="formpemain">
                                         <option selected>Choose Player...</option>
-                                        @foreach ($team_members as $team_member)
+                                        @foreach ($members as $member)
                                             
-                                            <option value="1">{{ $team_member->name}}</option>
+                                            <option value="{{ $member->id}}">{{ $member->user->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="input-group mb-3">
 
-                                    <select class="form-select" id="name" name="team" placeholder="Player Name"
+                                    <select class="form-select" id="name" name="team_member" placeholder="Player Name"
                                         aria-label="name" aria-describedby="email-addon" form="formpemain">
-                                        <option selected>Choose Team...</option>
+                                        <option selected>Choose Player...</option>
                                         @foreach ($teams as $team)
                                             
-                                            <option value="namatim">{{ $team["Name_Team"] }}</option>
+                                            <option value="{{ $team->id}}">{{ $team->Name_Team}}</option>
                                         @endforeach
                                     </select>
                                 </div>
+                                
 
 
                                 <div class="text-center">
