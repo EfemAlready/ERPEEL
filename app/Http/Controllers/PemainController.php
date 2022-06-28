@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class PemainController extends Controller
     public function index()
     {
         $user = user::all();
-        
+
         return view('adminpages.pemaincrud.index', ["title" => "Index", 'users' => $user]);
     }
 
@@ -57,7 +58,7 @@ class PemainController extends Controller
     {
         //
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -80,13 +81,13 @@ class PemainController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $data = User::findOrFail($id);
         $data->name = $request->name;
         $data->email = $request->email;
         $data->position = $request->position;
         $data->save();
-        
+
         return redirect('/tables')->with('success', 'Game Data is successfully updated');
     }
 
@@ -102,5 +103,13 @@ class PemainController extends Controller
         $user->delete();
 
         return redirect('/tables')->with('success', 'Game Data is successfully deleted');
+    }
+
+    public function dashboardpemain() #berfungsi untuk menampilkan tampilan menu dashboard
+
+    {
+        $pemain = user::all()->where('role', '0');
+
+        return view('pemain', ["title" => "Pemain", 'pemains' => $pemain]);
     }
 }
