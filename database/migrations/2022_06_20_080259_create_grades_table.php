@@ -26,6 +26,7 @@ return new class extends Migration
             $table->integer('agility');
             $table->integer('defending');
             $table->integer('overall');
+            $table->longText('feedback');
             $table->timestamps();
 
         });

@@ -55,16 +55,21 @@
                                         <input type="number" class="form-control" name="agility" placeholder="Agility"
                                             aria-label="Pace" aria-describedby="pace-addon" required>
                                     </div>
-                                    <div class="mb-3">
+                                     <div class="mb-3">
                                         <input type="number" class="form-control" name="defending" placeholder="Defending"
-                                            aria-label="Pace" aria-describedby="pace-addon" required>
+                                            aria-label="Defending" aria-describedby="pace-addon" required>
                                     </div>
+                                    <div class="mb-3">
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Give Feedback" rows="3" name="feedback"></textarea>
+                                    </div>
+
 
 
                                     <div class="text-center">
                                         <input type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">
                                     </div>
                                 </form>
+
 
                             </div>
                         </div>
@@ -132,6 +137,12 @@
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 Session</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Time</th>
+                                                <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Feedback</th>
 
                                         </tr>
                                     </thead>
@@ -162,6 +173,8 @@
                                                 <td>{{ $grade->defending }}</td>
                                                 <td>{{ $grade->overall }}</td>
                                                 <td>{{ $grade->event->title }}</td>
+                                                <td>{{ $grade->event->start_date }}</td>
+                                                <td>{{ $grade->feedback }}</td>
                                                 {{-- <td>{{ $grade->title }}</td> --}}
                                                 {{-- <td><a href="{{ route('pemaincrud.edit', $pemain->id) }}"
                                                                     class="btn btn-primary">Edit</a></td>

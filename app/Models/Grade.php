@@ -18,6 +18,7 @@ class Grade extends Model
         'agility',
         'defending',
         'overall',
+        'feedback',
     ];
 
     public function user()

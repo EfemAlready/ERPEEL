@@ -56,6 +56,7 @@ class GradeController extends Controller
             'agility' => $r->agility,
             'defending' => $r->defending,
             'overall' => $overall,
+            'feedback' => $r->feedback
         ]);
 
         // dd($data);

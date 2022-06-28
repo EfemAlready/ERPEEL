@@ -23,7 +23,7 @@
                             <h6 style="font-weight: 700">File Import</h6>
                         </div>
                         <div class="card-body" style="margin-bottom: -5vh">
-                            
+
 
                         </div>
                         <div class=card-footer></div>
@@ -39,8 +39,13 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                
-                                <input type="text" class="form-control" id="title">
+                                <select class="form-select" id="title" name="title" placeholder="title"
+                                    aria-label="title" aria-describedby="email-addon" form="formpemain">
+                                    <option selected>Choose Session</option>
+                                    <option value="Training">Training</option>
+                                    <option value="Match">Match</option>
+                                </select>
+
                                 <span id="titleError" class="text-danger"></span>
                             </div>
                             <div class="modal-footer">
