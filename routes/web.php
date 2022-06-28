@@ -36,6 +36,9 @@ Route::get('/tables', [App\Http\Controllers\AdminController::class, 'alltables']
 Route::get('/profile', [App\Http\Controllers\AdminController::class, 'profile']);
 Route::get('/lineup', [App\Http\Controllers\AdminController::class, 'lineup']);
 
+Route::get('/pemain', [App\Http\Controllers\PemainController::class, 'dashboardpemain']);
+
+
 Route::get('/listaspel', [App\Http\Controllers\AdminController::class, 'listaspel']);
 Route::get('/listpel', [App\Http\Controllers\AdminController::class, 'listpel']);
 
@@ -58,4 +61,3 @@ Route::get('event/index', [App\Http\Controllers\FullCalendarController::class, '
 Route::post('event', [App\Http\Controllers\FullCalendarController::class, 'action'])->name('calendar.action');
 Route::patch('event/update/{id}', [App\Http\Controllers\FullCalendarController::class, 'update'])->name('calendar.update');
 Route::delete('event/destroy/{id}', [App\Http\Controllers\FullCalendarController::class, 'destroy'])->name('calendar.destroy');
-

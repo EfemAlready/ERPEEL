@@ -330,7 +330,11 @@ figure {
   margin: 0 0 1rem;
 }
 
-img,
+img {
+  border-radius: 50%;
+  box-shadow: 4px 4px 5px lightgray;
+}
+
 svg {
   vertical-align: middle;
 }
@@ -4946,8 +4950,8 @@ fieldset:disabled .btn {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-    background-color: #fff;
-    border-color: #fff #fff #00897B;
+  background-color: #fff;
+  border-color: #fff #fff #00897B;
 }
 
 .nav-tabs .dropdown-menu {
