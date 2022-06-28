@@ -39,51 +39,36 @@
                         <div class="card-body" style="margin-bottom: -5vh">
                             <div class="row d-flex justify-content-center mb-3">
                                 <div class="col" style="margin-left: 6vh">
-                                    <h6 style="color: grey">Games</h6>
+                                    <h6 style="color: grey">Player</h6>
 
                                 </div>
                                 <div class="col" style="margin-left: 20px; margin-right:20px">
-                                    <h6 style="color: grey">Minutes</h6>
+                                    <h6 style="color: grey">Match</h6>
 
                                 </div>
                                 <div class="col" style="">
-                                    <h6 style="color: grey">Sessions</h6>
+                                    <h6 style="color: grey">Training</h6>
 
                                 </div>
 
                             </div>
                             <div class="row d-flex justify-content-center mb-3">
                                 <div class="col d-flex justify-content-center">
-                                    <h4>22</h4>
+                                    <h4>{{ $player }}</h4>
 
                                 </div>
                                 <div class="col d-flex justify-content-center">
-                                    <h4>22</h4>
+                                    <h4>{{ $match }}</h4>
 
                                 </div>
                                 <div class="col d-flex justify-content-center">
 
-                                    <h4>22</h4>
+                                    <h4>{{ $session }}</h4>
 
                                 </div>
 
                             </div>
-                            <div class="row d-flex justify-content-center mb-2">
-                                <div class="col d-flex justify-content-center">
-                                    <h6 style="color: grey">30</h6>
 
-                                </div>
-                                <div class="col d-flex justify-content-center">
-                                    <h6 style="color: grey">2345</h6>
-
-                                </div>
-                                <div class="col d-flex justify-content-center">
-
-                                    <h6 style="color: grey">80</h6>
-
-                                </div>
-
-                            </div>
 
                         </div>
                         <div class="card-footer">

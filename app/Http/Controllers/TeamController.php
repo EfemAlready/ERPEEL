@@ -54,15 +54,19 @@ class TeamController extends Controller
      * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
-    public function show(Team $member)
+    public function show($team_id)
 
     {
-        $team_member = DB::table('team_members')
-            ->leftJoin('users', 'users.id', '=', 'team_members.id')
-            ->rightJoin('teams', 'teams.id', '=', 'team_members.id')
-            ->get();
+        // $team_member = DB::table('team_members')
+        //     ->leftJoin('users', 'users.id', '=', 'team_members.id')
+        //     ->rightJoin('teams', 'teams.id', '=', 'team_members.id')
+        //     ->get();
+
+        $team_member = TeamMember::where('team_id', $team_id)->get();
+
+        // dd($team_member);
         
-        return view('adminpages.teamcrud.show', ["title" => 'Details'], compact('member'))->with('members', $team_member);
+        return view('adminpages.teamcrud.show', ["title" => 'Details', "team_members" => $team_member]);
 
     }
 
