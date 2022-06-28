@@ -46,7 +46,7 @@
                                                             alt="user1">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
-                                                        {{ $user['name'] }}
+                                                        {{ $grade['name'] }}
                                                     </div>
 
                                                 </div>
@@ -57,9 +57,10 @@
                                             <td>{{ $grade['created_at'] }}</td>
                                             <td><a href="{{ route('gradecrud.edit', $grade->id) }}"
                                                     class="btn btn-primary">Edit</a></td>
-                            
+
                                             <td>
-                                                <form action="{{ route('gradecrud.destroy', $grade->id) }}" method="post">
+                                                <form action="{{ route('gradecrud.destroy', $grade->id) }}"
+                                                    method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-danger" type="submit">Delete</button>

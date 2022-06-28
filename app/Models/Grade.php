@@ -10,11 +10,23 @@ class Grade extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'user_id',
+        'event_id',
         'pace',
         'shooting',
-        'passing', 
+        'passing',
         'agility',
         'defending',
+        'overall',
     ];
-    
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    public function Event()
+    {
+        return $this->belongsTo('App\Models\Event');
+    }
 }

@@ -17,7 +17,7 @@ class GradeController extends Controller
     {
         $grade = Grade::all();
 
-        return view('adminpages.gradecrud.index', ["title" => "Index", 'srades' => $grade]);
+        return view('adminpages.gradecrud.index', ["title" => "Index", 'grades' => $grade]);
     }
 
     /**
@@ -36,14 +36,29 @@ class GradeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $r)
     {
-        $data = new Grade();
-        $data->pace = $request->pace;
-        $data->shooting = $request->shooting;
-        $data->agility = $request->agility;
-        $data->defending = $request->defending;
-        $data->save();
+        // $data = new Grade();
+        // $data->pace = $request->pace;
+        // $data->shooting = $request->shooting;
+        // $data->agility = $request->agility;
+        // $data->defending = $request->defending;
+        // $data->save();
+
+        $overall = ($r->pace + $r->shooting + $r->passing + $r->agility + $r->defending) / 5;
+
+        $data = Grade::create([
+            'user_id' => $r->player,
+            'event_id' => $r->event,
+            'pace' => $r->pace,
+            'shooting' => $r->shooting,
+            'passing' => $r->passing,
+            'agility' => $r->agility,
+            'defending' => $r->defending,
+            'overall' => $overall,
+        ]);
+
+        // dd($data);
 
         return redirect()->back()->with('success', 'Grade is successfully saved');
     }
@@ -103,7 +118,8 @@ class GradeController extends Controller
 
         return redirect('/tables')->with('success', 'Game Data is successfully deleted');
     }
-    public function avg(){
+    public function avg()
+    {
         $avg = DB::table('grades')
             ->average('overall')
             ->get();
