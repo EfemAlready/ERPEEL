@@ -107,7 +107,7 @@
                                                                 </div>
                                                                 <div class="d-flex flex-column justify-content-center">
                                                                     <h6 class="mb-0 text-sm">{{ $pemain['name'] }}</h6>
-                                                                    <p class="text-xs text-secondary mb-0">GoalKeeper</p>
+                                                                    <p class="text-xs text-secondary mb-0">{{ $pemain['position'] }}</p>
                                                                 </div>
 
                                                             </div>

@@ -139,7 +139,7 @@
                                                 Session</th>
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                Time</th>
+                                                Date</th>
                                                 <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 Feedback</th>
@@ -173,7 +173,7 @@
                                                 <td>{{ $grade->defending }}</td>
                                                 <td>{{ $grade->overall }}</td>
                                                 <td>{{ $grade->event->title }}</td>
-                                                <td>{{ $grade->event->start_date }}</td>
+                                                <td>{{ substr($grade->event->start_date, 0, 10) }}</td>
                                                 <td>{{ $grade->feedback }}</td>
                                                
 
