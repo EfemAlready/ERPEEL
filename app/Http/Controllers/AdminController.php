@@ -163,10 +163,23 @@ class AdminController extends Controller
         // ]);
         return view('adminpages.grade', ["title" => "Grades", 'avgovrs' => $avgovr, 'avgpaces' => $avgpace, 'avgshootings' => $avgshooting, 'avgpassings' => $avgpassing, 'avgagilitys' => $avgagility, 'avgdefendings' => $avgdefending, 'player' => $player, 'event' => $event])->with('grades', $grade);
     }
+
+    public function simpan(Request $r)
+    {
+        $data = TeamMember::create([
+            'team_id' => $r->team,
+            'user_id' => $r->player,
+        ]);
+
+        // dd($data);
+
+        return redirect()->back();
+    }
+
     public function lineup(Request $request)
     {
-        $user = user::all();
-        $team = team::all();
+        $player = User::where('role', '0')->get();
+        $team = Team::all();
         // $avgovr = grade::all()
         //     ->average('overall');
         // ->leftJoin('users', 'users.id', '=', 'team_members.id')
@@ -174,12 +187,9 @@ class AdminController extends Controller
         // ->get();
         // dd($request);
         $member = TeamMember::all();
-        // $data = TeamMember::create([
-        //     'user_id' => $request->player,
-        //     'team_id' => $request->team,
-
+        
         // ]);
-        // dd($member);
+        // dd($data);
         // $teammember = TeamMember::create([
         //     'team_id' => $request->team_id,
         //     'user_id' => $request->user_id
@@ -187,6 +197,6 @@ class AdminController extends Controller
 
 
 
-        return view('adminpages.lineup', ["title" => "Team", 'teams' => $team,], compact('team'))->with('members', $member);
+        return view('adminpages.lineup', ["title" => "Team", 'teams' => $team, 'player' => $player], compact('team'))->with('members', $member);
     }
 }

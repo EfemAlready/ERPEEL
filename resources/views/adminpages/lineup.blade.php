@@ -36,27 +36,25 @@
 
                         </div>
                         <div class="card-body">
-                            <form action="{{ url('/addteammember') }}" role="form text-left" method="POST" id="">
+                            <form action="{{ route('addteammember.simpan') }}" role="form text-left" method="POST" id="">
                                 @csrf
                                 <div class="input-group mb-3">
 
-                                    <select class="form-select" id="name" name="team_member" placeholder="Player Name"
-                                        aria-label="name" aria-describedby="email-addon" form="formpemain">
-                                        <option selected>Choose Player...</option>
-                                        @foreach ($members as $member)
+                                    <select class="form-select" id="name" name="player" placeholder="Player Name">
+                                        <option selected>Choose Player</option>
+                                        @foreach ($player as $p)
                                             
-                                            <option value="{{ $member->id}}">{{ $member->user->name}}</option>
+                                            <option value={{ $p->id}}>{{ $p->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="input-group mb-3">
 
-                                    <select class="form-select" id="name" name="team_member" placeholder="Player Name"
-                                        aria-label="name" aria-describedby="email-addon" form="formpemain">
-                                        <option selected>Choose Player...</option>
+                                    <select class="form-select" id="name" name="team" placeholder="Team Name">
+                                        <option selected>Choose Team</option>
                                         @foreach ($teams as $team)
                                             
-                                            <option value="{{ $team->id}}">{{ $team->Name_Team}}</option>
+                                            <option value={{ $team->id}}>{{ $team->Name_Team}}</option>
                                         @endforeach
                                     </select>
                                 </div>
